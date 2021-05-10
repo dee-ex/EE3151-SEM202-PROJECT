@@ -25,7 +25,7 @@ class Block(nn.Module):
     return self.dropout(x) if self.use_dropout else x
 
 class Generator(nn.Module):
-  def __init__(self, in_channels=3, features=64):
+  def __init__(self, in_channels=1, out_channels=2, features=64):
     super().__init__()
 
     self.initial_down = nn.Sequential(
@@ -48,7 +48,7 @@ class Generator(nn.Module):
     self.up6 = Block(features * 4 * 2, features * 2, False, "relu", False)
     self.up7 = Block(features * 2 * 2, features, False, "relu", False)
     self.final_up = nn.Sequential(
-      nn.ConvTranspose2d(features * 2, in_channels, 4, 2, 1),
+      nn.ConvTranspose2d(features * 2, out_channels, 4, 2, 1),
       nn.Tanh(),
     )
 
