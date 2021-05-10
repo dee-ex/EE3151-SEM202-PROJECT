@@ -3,4 +3,4 @@
 <h1 align="center">EE3151 SEM202 PROJECT</h1>
 
 ## Tóm tắt
-Mô hình được xây dựng theo kiểu **mạng đối nghịch tạo sinh** (_GAN - Generative Adversarial Network_) với **Generator** có kiến trúc **Unet** dựa theo mạng huấn luyện sẵn **ResNet18**, sau khi học đã có khả năng tự động tô màu những ảnh xám, cũ một cách chân thực, hợp lí.
+Mô hình có khả năng **tự động tô màu những ảnh xám, cũ một cách chân thực, hợp lí**. Kiến trúc mô hình là kiến trúc của một **mạng đối nghịch tạo sinh** (_GAN - Generative Adversarial Network_) với **bộ phân biệt 70x70** kết hợp với **bộ sinh theo kiến trúc mạng Unet** được tạo nên từ phương pháp **học chuyển tiếp từ mạng ResNet18**.
