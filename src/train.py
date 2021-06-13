@@ -1,59 +1,82 @@
+import gc
 import time
-from tqdm.notebook import tqdm
+import torch
+from tqdm import tqdm
+from utils import visualize
+from metric import init_loss_meters, update_losses, log_results
 
-def train_generator(device, G, train_dl, val_dl, opt, criterion, epochs):
-  for e in range(epochs):
-    train_loss_meter = AverageMeter()
-    val_loss_meter = AverageMeter()
+def train(model, train_dl, val_dl, epochs, display_every=200, save_model=True, save_fig=True):
+    fixed_val_data = next(iter(val_dl))
 
-    G.train()
-    for data in tqdm(train_dl):
-      L, ab = data["L"].to(device), data["ab"].to(device)
+    for e in range(1, epochs + 1):
+        loss_meters = init_loss_meters()
+        i = 0
 
-      preds = G(L)
+        for data in tqdm(train_dl):
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
-      loss = criterion(preds, ab)
+            model.setup_input(data)
 
-      opt.zero_grad()
-      loss.backward()
-      opt.step()
+            model.optimize()
 
-      train_loss_meter.update(loss.item(), L.size(0))
+            update_losses(model, loss_meters, data["L"].shape[0])
 
-    G.eval()
-    for data in tqdm(val_dl):
-      L, ab = data["L"].to(device), data["ab"].to(device)
+            i += 1
+            if i % display_every == 0:
+                print(f"Epoch {e}/{epochs}: Iteration {i}/{len(train_dl)}")
 
-      preds = G(L)
+                log_results(loss_meters)
 
-      loss = criterion(preds, ab)
+                visualize(model, fixed_val_data, save_fig, e)
 
-      val_loss_meter.update(loss.item(), L.size(0))
+        if save_model:
+            torch.save(model.state_dict(), f"{e}_{time.time()}.pt")
+            torch.save(model.D.state_dict(), f"{e}_D_{time.time()}.pt")
+            torch.save(model.G.state_dict(), f"{e}_G_{time.time()}.pt")
 
-    print(f"Epoch {e + 1}/{epochs}")
-    print(f"L1 --- Trn_loss: {train_loss_meter.avg:.4f} --- Val_loss: {val_loss_meter.avg:.4f}")
-    torch.save(G.state_dict(), f"./gen_models/{e}_{time.time()}_res18-unet.pt")
+def test():
+    import glob
+    import numpy as np
+    from torch.utils.data import DataLoader
+    from fastai.data.external import untar_data, URLs
+    from datasets import TrainingDataset, TestDataset
+    from discriminator import PatchDiscriminator
+    from generator import Generator
+    from gan import MainModel
 
-def train_model(model, train_dl, val_dl, epochs, display_every=200):
-  fixed_val_data = next(iter(val_dl))
+    root = str(untar_data(URLs.COCO_SAMPLE)) + "/train_sample"
 
-  for e in range(epochs):
-    loss_meters = init_loss_meters()
-    i = 0
-    for data in tqdm(train_dl):
-      model.setup_input(data)
+    paths = glob.glob(root + "/*.jpg")
+    print(len(paths))
 
-      model.optimize()
+    np.random.seed(42)
 
-      update_losses(model, loss_meters, data["L"].size(0))
+    paths_subset = np.random.choice(paths, 3, replace=False)
 
-      i += 1
-      if i % display_every == 0:
-        print(f"\nEpoch {e+1}/{epochs}")
-        print(f"Iteration {i}/{len(train_dl)}")
-        log_results(loss_meters)
+    print(paths_subset)
 
-        visualize(model, fixed_val_data, e)
+    rand_idxs = np.random.permutation(3)
+    train_idxs = rand_idxs[:2]
+    val_idxs = rand_idxs[2:]
 
-    torch.save(model.D.state_dict(), f"./models/{e}_D_{time.time()}.pt")
-    torch.save(model.G.state_dict(), f"./models/{e}_G_{time.time()}.pt")
+    train_paths = paths_subset[train_idxs]
+    val_paths = paths_subset[val_idxs]
+
+    train_ds = TrainingDataset(256, train_paths)
+    val_ds = TestDataset(256, val_paths)
+
+    train_dl = DataLoader(train_ds, 1, num_workers=1, pin_memory=True)
+    val_dl = DataLoader(val_ds, 1, num_workers=1, pin_memory=True)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    d = PatchDiscriminator(1, 2)
+    g = Generator(1, 2)
+
+    m = MainModel(device, d, g)
+
+    train(m, train_dl, val_dl, 10, 1, False, False)
+
+if __name__ == "__main__":
+    test()

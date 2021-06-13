@@ -5,48 +5,59 @@ from torchvision import transforms
 from torch.utils.data import Dataset
 
 class TrainingDataset(Dataset):
-  def __init__(self, paths):
-    self.transforms = transforms.Compose([
-            transforms.Resize((SIZE, SIZE)),
+    def __init__(self, size, paths):
+        super(TrainingDataset, self).__init__()
+
+        self.transforms = transforms.Compose([
+            transforms.Resize((size, size)),
             transforms.RandomHorizontalFlip(),
-        ])
-    self.paths = paths
+            ])
+        self.paths = paths
 
-  def __getitem__(self, idx):
-    img = Image.open(self.paths[idx]).convert("RGB")
-    img = self.transforms(img)
-    img = np.array(img)
+    def __getitem__(self, idx):
+        img = Image.open(self.paths[idx]).convert("RGB")
+        img = self.transforms(img)
+        img = np.array(img)
 
-    lab_img = rgb2lab(img).astype("float32")
-    lab_img = transforms.ToTensor()(lab_img)
+        lab_img = rgb2lab(img).astype("float32")
+        lab_img = transforms.ToTensor()(lab_img)
 
-    L = lab_img[[0], ...] / 50. - 1.
-    ab = lab_img[[1, 2], ...] / 110.
+        L = lab_img[[0], ...] / 50 - 1
+        ab = lab_img[[1, 2], ...] / 110.
 
-    return {"L": L, "ab": ab}
+        return {"L": L, "ab": ab}
 
-  def __len__(self):
-    return len(self.paths)
+    def __len__(self):
+        return len(self.paths)
 
-class ValidationDataset(Dataset):
-  def __init__(self, paths):
-    self.transforms = transforms.Compose([
-            transforms.Resize((SIZE, SIZE)),
-        ])
-    self.paths = paths
+class TestDataset(Dataset):
+    def __init__(self, size, paths):
+        super(TestDataset, self).__init__()
 
-  def __getitem__(self, idx):
-    img = Image.open(self.paths[idx]).convert("RGB")
-    img = self.transforms(img)
-    img = np.array(img)
+        self.transforms = transforms.Compose([
+            transforms.Resize((size, size)),
+            ])
+        self.paths = paths
 
-    lab_img = rgb2lab(img).astype("float32")
-    lab_img = transforms.ToTensor()(lab_img)
+    def __getitem__(self, idx):
+        img = Image.open(self.paths[idx]).convert("RGB")
+        img = self.transforms(img)
+        img = np.array(img)
 
-    L = lab_img[[0], ...] / 50. - 1.
-    ab = lab_img[[1, 2], ...] / 110.
+        lab_img = rgb2lab(img).astype("float32")
+        lab_img = transforms.ToTensor()(lab_img)
 
-    return {"L": L, "ab": ab}
+        L = lab_img[[0], ...] / 50 - 1
+        ab = lab_img[[1, 2], ...] / 110.
 
-  def __len__(self):
-    return len(self.paths)
+        return {"L": L, "ab": ab}
+
+    def __len__(self):
+        return len(self.paths)
+
+def test():
+    _ = TrainingDataset(256, [])
+    _ = TestDataset(256, [])
+
+if __name__ == "__main__":
+    test()

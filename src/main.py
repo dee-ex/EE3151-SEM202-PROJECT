@@ -1,46 +1,46 @@
 import glob
+import torch
 import numpy as np
 from torch.utils.data import DataLoader
 from torchvision.models.resnet import resnet18
 from fastai.data.external import untar_data, URLs
-
-SIZE = 256
+from datasets import TrainingDataset, TestDataset
+from discriminator import PatchDiscriminator
+from generator import Generator, pretrained_generator
+from gan import MainModel
+from train import train
 
 if __name__ == "__main__":
-  root = str(untar_data(URLs.COCO_SAMPLE)) + "/train_sample"
+    root = str(untar_data(URLs.COCO_SAMPLE)) + "/train_sample"
 
-  paths = glob.glob(root + "/*.jpg")
+    paths = glob.glob(root + "/*.jpg")
+    print(len(paths))
 
-  np.random.seed(42)
-  paths_subset = np.random.choice(paths, 12_000, replace=False)
+    np.random.seed(42)
 
-  rand_idxs = np.random.permutation(12_000)
-  train_idxs = rand_idxs[:10_000]
-  val_idxs = rand_idxs[10_000:]
+    paths_subset = np.random.choice(paths, 18_500, replace=False)
 
-  train_paths = paths_subset[train_idxs]
-  val_paths = paths_subset[val_idxs]
+    print(paths_subset)
 
-  train_dset = TrainingDataset(train_paths)
-  val_dset = ValidationDataset(val_paths)
+    rand_idxs = np.random.permutation(18_500)
+    train_idxs = rand_idxs[:18_000]
+    val_idxs = rand_idxs[18_000:]
 
-  train_dl = DataLoader(train_dset, 16, num_workers=2, pin_memory=True)
-  val_dl = DataLoader(val_dset, 16, num_workers=2, pin_memory=True)
+    train_paths = paths_subset[train_idxs]
+    val_paths = paths_subset[val_idxs]
 
+    train_ds = TrainingDataset(256, train_paths)
+    val_ds = TestDataset(256, val_paths)
 
-  device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    train_dl = DataLoader(train_ds, 16, num_workers=2, pin_memory=True)
+    val_dl = DataLoader(val_ds, 16, num_workers=2, pin_memory=True)
 
-  D = PatchDiscriminator(1, 2).to(device)
-  G = build_generator(1, 2, resnet18).to(device)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    d = PatchDiscriminator(1, 2)
+    # g = Generator(1, 2)
+    g = pretrained_generator(256, 1, 2, resnet18, -2)
+    # g.load_state_dict(torch.load("path"))
 
-  # l1_opt = optim.Adam(G.parameters(), lr=1e-4)
-  # l1_loss = nn.L1Loss()
+    m = MainModel(device, d, g)
 
-  # train_generator(device, G, train_dl, val_dl, l1_opt, l1_loss, 20)
-
-  G.load_state_dict(torch.load("res18-unet.pt", map_location=device))
-
-
-  model = MainModel(device, D, G)
-
-  train_model(model, train_dl, val_dl, 20)
+    train(m, train_dl, val_dl, 20, 200, False, False)
