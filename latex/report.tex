@@ -200,6 +200,7 @@ Em xin chân thành cảm ơn.\vspace{20pt}\\
 \indent
 Tạo màu cho ảnh xám là một chủ đề nóng hổi và thú vị trong ngành thị giác máy tính trong khoảng hai thập kỉ vừa qua. Rất nhiều những nghiên cứu đã được thực hiện và cho rất nhiều phương pháp với những kết quả ấn tượng. Tuy việc tạo màu cho mỗi trường hợp là một bài toán có không ít lời giải vì rất nhiều màu có thể có cùng mức xám. Với một tấm ảnh xám đầu vào, ta có thể có nhiều phương án màu lựa chọn mà vẫn có được tính chân thực. Nhưng điều đó không đồng nghĩa với việc đây là một bài toán đơn giản mà trái lại là một vấn đề nan giải.\vspace{5pt}\\
 Trong đồ án này, một mô hình mạng đối nghịch tạo sinh có điều kiện - cGAN có bộ sinh kiến trúc Unet xây dựng bằng xương sống chuyển giao từ mạng phân loại ResNet18 và bộ phân biệt kiến trúc PatchGAN $70\times 70$, được triển khai và huấn luyện với tập dữ liệu 10,000 bức ảnh của tập dữ liệu COCO để xử lí vấn đề này. Chất lượng mô hình thông qua một cuộc khảo sát thực tế 100 người được đánh giá ở mức trung bình--khá.
+Bên cạnh đó, xây dựng được một API tạo màu bằng khung phần mềm Django của Python, từ đó triển khai một ứng dụng web đơn giản để tạo màu cho ảnh bằng khung phần mềm VueJS của Javascript.
 
 \newpage
 
@@ -419,7 +420,7 @@ Mạng Unet bao gồm 2 nhánh đối xứng nhau hình chữ U nên được g�
 \subsection{Kiến trúc được áp dụng}
 Bài toán tạo màu có thể được tóm tắt như sau:
 \begin{tcolorbox}
-Cho một ảnh đầu vào có kích thước $S\times S = 256\times 256$ chỉ có thông tin cường độ mức sáng mỗi điểm ảnh là $\mathbf{L^*} \in \mathbb{R}$, ta cần phải xây dựng một ánh xạ $\mathcal{G}: \mathbf{L^*} \rightarrow \left(\mathbf{a^*}, \mathbf{b^*}\right) \in \mathbb{R}^2$ sao cho $\mathcal{I} = \left\{p_{ij} = \left(\mathbf{L^*}_{ij}, \mathbf{a^*}_{ij}, \mathbf{b^*}_{ij}\right)\vert p_{ij} \text{ là điểm ảnh ở hàng } i \text{, cột } j\right\}$ là một ảnh màu hợp lí, chân thực với $\mathbf{a^*}$ và $\mathbf{b^*}$ lần lượt là 2 kênh màu lục-đỏ và vàng-lam trong không gian màu \textbf{L*a*b*}.
+Cho một ảnh đầu vào có kích thước $S\times S = 256\times 256$ chỉ có thông tin cường độ mức sáng mỗi điểm ảnh là $\mathbf{L^*} \in \mathbb{R}$, ta cần phải xây dựng một ánh xạ $\mathcal{G}: \mathbf{L^*} \rightarrow \left(\widehat{\mathbf{a^*}}, \widehat{\mathbf{b^*}}\right) \in \mathbb{R}^2$ sao cho $\mathcal{I} = \left\{p_{ij} = \left(\mathbf{L^*}_{ij}, \widehat{\mathbf{a^*}}_{ij}, \widehat{\mathbf{b^*}}_{ij}\right)\vert p_{ij} \text{ là điểm ảnh ở hàng } i \text{, cột } j\right\}$ là một ảnh màu hợp lí, chân thực với $\widehat{\mathbf{a^*}}$ và $\widehat{\mathbf{b^*}}$ lần lượt là giá trị 2 kênh màu lục-đỏ và vàng-lam trong không gian màu \textbf{L*a*b*}.
 \end{tcolorbox}
 \noindent
 Trong mạng GAN được huấn luyện, bộ sinh $G$ sẽ sinh ra 2 kênh màu \textbf{a*} và \textbf{b*} - Chính là ánh xạ $\mathcal{G}$ cần tìm. Còn bộ phân biệt $D$ có nhiệm vụ phân biệt ảnh màu đưa vào là thật hay giả.
@@ -507,13 +508,13 @@ Trong mạng cGAN của chúng ta, được quan tâm hơn cả là bộ sinh v�
     &\text{nhánh phải:} \rightarrow \text{D512} \rightarrow \text{D1024} \rightarrow \text{D1024} \rightarrow \text{D1024} \rightarrow \text{D512} \rightarrow \text{D256} \rightarrow \text{D128} \rightarrow \text{D2}
 \end{align*}
 Trong đó, $\text{Ck}$ là một tầng tích chập $k$ bộ lọc, $\text{Dk}$ là một tầng giải chập bằng tích chập chuyển vị với $k$ bộ lọc. Cả 2 quá trình chập và giải chập đều sử dụng kích thước bộ lọc là $4$, sải bước $2$ và đệm $1$.\vspace{5pt}\\
-Xây dựng mô hình theo kiến trúc trên không quá khó, nhưng huấn luyện để có được kết quả tốt tương tự, khi hạn chế về số lượng và chất lượng của tập dữ liệu, cũng như phần cứng máy tính bị giới là khá thử thách (xem phần \ref{badexperiment}).\vspace{5pt}\\
+Xây dựng mô hình theo kiến trúc trên không quá khó, nhưng huấn luyện để có được kết quả tốt tương tự, khi hạn chế về số lượng và chất lượng của tập dữ liệu, cũng như phần cứng máy tính bị giới là khá thử thách [\textbf{\ref{badexperiment}}].\vspace{5pt}\\
 Cải thiện mô hình mà vẫn tiết kiệm chi phí, phương pháp học chuyển giao được áp dụng để làm điều này. Kiến trúc cho bộ sinh vẫn sẽ là kiến trúc theo mạng Unet, tuy nhiên sẽ được chuyển giao bằng cách lấy xương sống là ResNet18 \cite{christopherresunet2019}. Có 3 họ mạng được chủ yếu dùng để làm xương sống cho Unet là VGG, ResNet và Xception \cite{backboneresnet2020}. Trong những họ mạng trên, ResNet18 có kích thước không quá lớn \cite{Khan_2020}, phù hợp để huấn luyện với phần cứng bị giới hạn. Một lưu ý là mạng ResNet18 sẽ chỉ làm phía mã hoá, tức nhánh bên trái của chữ U chứ không hề xây dựng toàn bộ cả mạng Unet. Phần mã hoá sẽ được tự động khởi tạo bởi thư viện fastai\footnote{fastai Documentation, ``Dynamic UNet'', \href{https://docs.fast.ai/vision.models.unet.html}{https://docs.fast.ai/vision.models.unet.html}}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Triển khai mô hình}
 
-\subsection{Ngôn ngữ lập trình \& Thư viện chính}
+\subsection{Ngôn ngữ lập trình và thư viện chính}
 Ngôn ngữ lập trình được sử dụng để triển khai mô hình là \textbf{Python} với sự hỗ trợ chính của thư viện \textbf{PyTorch}. Để cài đặt những công cụ này, có thể theo đường dẫn bên dưới:
 \begin{itemize}
     \item Python: \href{https://www.python.org/downloads/}{https://www.python.org/downloads/}
@@ -550,7 +551,7 @@ Chuẩn hoá dữ liệu đầu vào là bước tiền xử lí giúp tăng t�
 \end{align*}
 
 \noindent
-Bên cạnh đó, kích thước ảnh cũng sẽ được điều chỉnh lại thành ảnh vuông kích thước $256\times 256$ nếu cần thiết, và sử dụng lật đối xứng theo trục tung để làm giàu dữ liệu cho việc huấn luyện.
+Bên cạnh đó, kích thước ảnh cũng sẽ được điều chỉnh lại thành ảnh vuông kích thước $256\times 256$ nếu cần thiết, và sử dụng lật đối xứng theo trục tung để làm giàu dữ liệu cho việc huấn luyện. Như vậy, tổng số lượng dữ liệu mà mô hình được học sẽ là $10,000 \times 2 = 20,000$.
 
 \subsection{Huấn luyện mô hình}
 Cách thức huấn luyện mô hình sử dụng Python-PyTorch được tham khảo chính từ \cite{aladdinperssonyoutube, moeincolorization2020}, đồng thời cũng có thêm một vài tham khảo về việc sử dụng Keras \cite{tuannguyenpix2pix2020, khanhpix2pix2020, jasonpix2pix2019} để huấn luyện.\vspace{5pt}\\
@@ -560,12 +561,13 @@ Tải các thông số của bộ sinh đã được tiền huấn luyện độ
 \begin{figure}[!h]
 \captionsetup{width=0.8\textwidth}
 \centering
-\includegraphics[width=15cm]{images/3_6.png}
+\includegraphics[width=14cm]{images/3_6.png}
 \caption{Giá trị các thành phần mất mát của bộ phân biệt và bộ sinh qua từng epoch.}
 \end{figure}
 
 \noindent
-Nhận thấy xu hướng của giá trị mất mát khi huấn luyện mô hình GAN là giá trị mất mát của bộ phân biệt tăng thì giá trị mất mát của bộ sinh sẽ giảm và cả hai dường như đều sẽ hội tụ về một giá trị. Lí giải điều này, khi bộ phân biệt đạt đến một ngưỡng thông minh nhất định, bộ sinh thì lại càng thông minh qua mỗi epoch, hiển nhiên sẽ đánh lừa được bộ phân biệt. Điều này là hợp lí với nguyên lí non-zero-sum-games. Ngoài ra, giá trị mất mát của bộ sinh theo chuẩn 1 cũng được giảm, tuy không đáng kể.
+Nhận thấy xu hướng của giá trị mất mát khi huấn luyện mô hình GAN là giá trị mất mát của bộ phân biệt tăng thì giá trị mất mát của bộ sinh sẽ giảm và cả hai dường như đều sẽ hội tụ về một giá trị. Lí giải điều này, khi bộ phân biệt đạt đến một ngưỡng thông minh nhất định, bộ sinh thì lại càng thông minh qua mỗi epoch, hiển nhiên sẽ đánh lừa được bộ phân biệt. Điều này là hợp lí với nguyên lí non-zero-sum-games. Ngoài ra, giá trị mất mát của bộ sinh theo chuẩn 1 cũng được giảm, tuy không đáng kể.\vspace{5pt}\\
+Sau một số thử nghiệm định tính đơn giản, mô hình có kết quả tốt nhất là mô hình sau epoch thứ 15. Và sẽ là lựa chọn cho các thử nghiệm trong những phần sau.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Thử nghiệm và đánh giá mô hình}\label{testmodel}
@@ -583,7 +585,7 @@ Kết quả ở hình dưới là kết quả của mô hình được thử ngh
 \end{figure}
 
 \noindent
-Nhìn chung, việc huấn luyện mô hình là khả thi khi mô hình cũng đã có thể tạo được màu cho một số điểm ảnh sau vài chục epoch. Nhưng như nêu ra phần \ref{transferlearning}, giới hạn về phần cứng cũng như là tập dữ liệu không đủ nhiều và tốt, để có thể huấn luyện được mô hình theo như mong đợi.\vspace{5pt}\\
+Nhìn chung, việc huấn luyện mô hình là khả thi khi mô hình cũng đã có thể tạo được màu cho một số điểm ảnh sau vài chục epoch. Nhưng, như đã nêu ra [\textbf{\ref{transferlearning}}], giới hạn về phần cứng cũng như là tập dữ liệu không đủ nhiều và tốt, để có thể huấn luyện được mô hình theo như mong đợi.\vspace{5pt}\\
 Nhìn thêm ở một góc độ khác, việc huấn luyện một mạng GAN cũng không hề dễ dàng, khi GAN rất nhạy cảm với những thông số được cài đặt khi huấn luyện. Sau nhiều lần thử nghiệm thất bại, một trong số những kinh nghiệm rút ra là, trong hầu hết các mô hình GAN, ta nên khởi tạo các trọng số của mô hình và bias theo phân phối $\mathcal{N}\left(\mu, \sigma^2\right) = \mathcal{N}\left(0, 0.1\right)$ để quá trình huấn luyện nhanh hội tụ hơn. Dĩ nhiên không thể thiếu một điều kiện cần là một tập dữ liệu có chất lượng tốt.
 
 \subsection{Mô hình GAN với bộ sinh có xương sống ResNet18}
@@ -618,7 +620,7 @@ Một vài vùng ảnh, mô hình có vẻ như vẫn chưa thực sự chọn �
 \noindent
 Điều trên dẫn đến một hạn chế khác nữa là đối với những ảnh không có đặc trưng rõ ràng, những đặc trưng mà chưa được đưa vào huấn luyện cho mô hình. Chẳng hạn ảnh chủ đề logo hình \ref{fig:failcolorlogo}, mô hình hoàn toàn không có khả năng tạo được màu phù hợp vì không hiểu được đặc trưng.\vspace{5pt}\\
 Thêm một hạn chế khác là mô hình cũng chưa thực sự biết được những điểm ảnh nào sẽ cùng một đối tượng và cùng màu. Cụ thể như trong hình \ref{fig:betterexperiment}, ảnh hai cố gái cầm vợt tennis (thứ 2 từ phía bên phải), phần dưới của áo được chọn là màu hồng, còn phần trên của áo lại màu xanh. Nếu mô hình lựa cho phần áo màu hồng hay màu xanh thì đều chấp nhận được, nhưng mô hình lại chọn cách lựa hai phía của áo bởi hai màu khác nhau không đồng nhất.\vspace{5pt}\\
-Riêng với hình \ref{fig:edgecase} thực sự là một kết quả bất ngờ, mà hiện tại vẫn chưa lí giải được tại sao mô hình cho kết quả không thực sự tốt. Việc mô hình không có khả năng làm việc với đặc trưng mặt người là không khả thi, khi ở phần \ref{compare} cũng có một ảnh mặt người tương tự và mô hình vẫn cho kết quả ổn. Đây là một trường hợp đặc biệt cần thêm nhiều tìm hiểu.
+Riêng với hình \ref{fig:edgecase} thực sự là một kết quả bất ngờ, mà hiện tại vẫn chưa có một lí giải nào cho việc mô hình cho kết quả không thực sự tốt. Việc mô hình không có khả năng làm việc với đặc trưng mặt người là không khả thi, khi [\textbf{\ref{compare}}] cũng có một ảnh mặt người tương tự và mô hình vẫn cho kết quả ổn. Đây là một trường hợp đặc biệt cần thêm nhiều tìm hiểu.
 
 \subsection{So sánh bộ sinh có xương sống ResNet18 trước và sau khi huấn luyện đối nghịch}\label{compare}
 
@@ -767,18 +769,80 @@ Một điều dễ nhận ra là những ảnh có cây cối, phong cảnh thi�
 \end{figure}
 
 \noindent
-Tuy số lượng mẫu khảo sát nhỏ với chỉ 20 bức ảnh (chưa đủ để làm tổng thể) và sự đa dạng không cao cũng như là số lượng người tham gia khảo sát không quá lớn, chỉ với 100 người, nhưng cũng phần nào đánh giá được chất lượng của mô hình. Nhìn chung, với số điểm trung bình 3.38 thì mô hình có thể xem ở mức \textbf{trung bình--khá}.
+Tuy số lượng mẫu khảo sát nhỏ với chỉ 20 bức ảnh (chưa đủ làm tổng thể) và sự đa dạng không cao cũng như là số lượng người tham gia khảo sát không quá lớn, chỉ với 100 người, nhưng cũng phần nào đánh giá được chất lượng của mô hình. Nhìn chung, với số điểm trung bình 3.38 thì mô hình có thể xem ở mức \textbf{trung bình--khá}.
+
+\subsection{Kết quả sau khi huấn luyện lại với tập dữ liệu lớn hơn}\label{enhance_experiments}
+
+\begin{figure}[!h]
+\captionsetup{width=0.8\textwidth}
+\centering
+\includegraphics[width=15cm]{images/enhance.png}
+\caption{So sánh thử nghiệm sau khi huấn luyện lại. Hàng thứ 2 là kết quả của mô hình được huấn luyện lại.}
+\label{fig:enhance1}
+\end{figure}
+
+\begin{figure}[!h]
+\captionsetup{width=0.8\textwidth}
+\centering
+\includegraphics[width=15cm]{images/enhance2.png}
+\caption{Thêm một vài so sánh thử nghiệm sau khi huấn luyện lại. Hàng thứ 2 là kết quả của mô hình được huấn luyện lại.}
+\label{fig:enhance2}
+\end{figure}
+
+\noindent
+Đây là mô hình được khởi tạo với kiến trúc và huấn luyện với các thông số hoàn toàn giống với mô hình mà ta đã thử nghiệm. Nhưng lại được huấn luyện với một tập dữ liệu giàu hơn, gồm $18,000$ bức hình (so với $10,000$ của mô hình cũ) từ tập dữ liệu COCO. Số lượng đã tăng gấp 1.8 lần, kết hợp phương pháp làm giàu dữ liệu thì số lượng gấp 3.6 lần.\vspace{5pt}\\
+Việc huấn luyện với số lượng dữ liệu nhiều hơn, giúp cho mô hình có thêm nhiều hiểu biết về các đặc trưng. Từ đó, một số kết quả trở nên chân thực hơn (hình \ref{fig:enhance1}, cột 2; hình \ref{fig:enhance2}, cột 3).\vspace{5pt}\\
+Một sự khác biệt ở mô hình này, là quá trình huấn luyện không qua bước tiền huấn luyện bộ sinh. Có lẽ cũng vì vậy, mà màu của mô hình này khá tươi sáng, khi có nhiều điểm ảnh được cho màu đỏ hoặc lam (màu áo ở hình \ref{fig:enhance1}, cột thứ 5). Việc dũng cảm hơn trong việc tô màu, thay vì chọn màu xám, giúp cho một vài thứ có kết quả đẹp hơn (màu đèn ở hình \ref{fig:enhance1}, cột thứ 4; màu nước ở hình \ref{fig:enhance2}, cột thứ 4). Nhưng cũng đầy rủi ro, khi lại dễ dàng gây ra sự lem luốc (màu trời, màu toà nhà hình \ref{fig:enhance2}, cột thứ 5). Để cân đối được sáng tạo và khuôn khổ cho mô hình, công việc này cần thêm nhiều thử nghiệm trong tương lai.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ứng dụng}
+
+\subsection{Giao diện lập trình ứng dụng (API - Application Programming Interface) bằng khung phần mềm Django của Python}
+Để có thể dễ dàng chia sẻ tính năng phần mềm, cụ thể là việc tạo màu, API là một phương thức hữu hiệu được sử dụng nhiều nhất hiện nay. Ngoài ra, với việc mô hình được triển khai bằng ngôn ngữ Python, một ngôn ngữ có một khung phần mềm lập trình liên quan về website mạnh mẽ như Django, là một lợi thế.\vspace{5pt}\\
+Dựa trên những cơ sở đó, một API tạo màu đã được xây dựng có endpoint là \href{https://domain/main/}{https://domain/main/} (trong quá trình thử nghiệm, \texttt{domain} là \texttt{localhost:8000}). Phương thức gửi yêu cầu được chấp nhận là POST. Nội dung ảnh sẽ được đính kèm, không qua mã hoá, trong phần thân của yêu cầu gửi tới. Vì mục đích thử nghiệm là chủ yếu, các phương thức bảo mật CSRF, CORS (xem hình \ref{fig:cors}) được tắt để tránh gây phiền hà khi thao tác.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=16cm]{images/cors.png}
+\caption{Bảo mật CORS cản trở khi thử nghiệm API}
+\label{fig:cors}
+\end{figure}
+
+\noindent
+Khi nhận được yêu cầu, endpoint tiếp nhận và xử lý, sau đó trả về phản hồi đính kèm ảnh được tạo màu dưới định dạng dữ liệu ReadableStream.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=16cm]{images/readablestream.png}
+\caption{Phản hồi trả về của endpoint}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=15cm]{images/postman.png}
+\caption{Thử nghiệm API trên phần mềm Postman}
+\end{figure}
+
+\subsection{Ứng dụng web với khung phần mềm VueJS của Javascript và API}
+Tận dụng API đã được xây dựng, kết hợp với khung phần mềm thiết kế giao diện VueJS, ta dễ dàng tạo được một ứng dụng website thân thiện với người dùng. Chỉ cần chọn một tấm ảnh xám, ứng dụng trả về một tấm ảnh sau khi được tạo màu và cho phép người dùng tải về.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=15cm]{images/demoweb.png}
+\caption{Ứng dụng web tạo màu đơn giản bằng VueJS kết hợp API}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tổng kết}
 
 \subsection{Kết luận}
 Một phương pháp tạo màu cho ảnh xám đã được trình bày thông qua đồ án này. Phương pháp sử dụng khung mô hình một mạng đối nghịch tạo sinh có điều kiện - cGAN dùng bộ phân biệt Patch $70\times 70$, được huấn luyện theo kiểu đối nghịch kết hợp với một hàm mất mát chuẩn bậc 1 bằng tập dữ liệu 10,000 bức ảnh của COCO. Ánh xạ $\mathcal{G}:\mathbf{L^*} \rightarrow (\mathbf{a^*}, \mathbf{b^*})$ để tạo 2 kênh màu trong không gian màu \textbf{L*a*b*} chính là bộ sinh của mạng được thiết kế theo kiến trúc Unet có xương sống được học chuyển giao từ mô hình ResNet18 đã được tinh chỉnh.\vspace{5pt}\\
-Chất lượng mô hình được đánh giá dựa qua một cuộc khảo sát thực tế, với sự tham gia giúp đỡ của 100 người. Bài khảo sát bao gồm 20 bức ảnh có màu tạo từ bộ sinh, theo thang điểm từ 1 (rất giả) tới 5 (rất thật). Kết quả nhận được là số điểm trung bình 3.38, trong đó số điểm cao nhất là 4.01 và thấp nhất là 2.53. Theo như mục tiêu được đề ra ở phần \ref{objective}, mô hình đã hoàn thành được ở mức trung bình--khá.
+Chất lượng mô hình được đánh giá dựa qua một cuộc khảo sát thực tế, với sự tham gia giúp đỡ của 100 người. Bài khảo sát bao gồm 20 bức ảnh có màu tạo từ bộ sinh, theo thang điểm từ 1 (rất giả) tới 5 (rất thật). Kết quả nhận được là số điểm trung bình 3.38, trong đó số điểm cao nhất là 4.01 và thấp nhất là 2.53. Theo như mục tiêu được đề ra [\textbf{\ref{objective}}], mô hình đã hoàn thành được ở mức trung bình--khá.\vspace{5pt}\\
+Bên cạnh đó, xây dựng được một API tạo màu bằng khung phần mềm Django của Python, từ đó triển khai một ứng dụng web đơn giản để tạo màu cho ảnh bằng khung phần mềm VueJS của Javascript.
 
 \subsection{Hướng cải thiện mô hình}
-
-Mô hình vẫn chưa có kết quả tốt khi áp dụng với những ảnh có đặc trưng lạ, chưa được học trong quá trình huấn luyện. Để cải thiện trí tuệ mô hình, ta cần tìm thêm nhiều tập dữ liệu với các đối tượng, đặc trưng phong phú để huấn luyện thêm. Ngoài ra, sử dụng một xương sống được tinh chỉnh tốt hơn mạng ResNet18 hiện có, chẳng hạn ResNet34, ResNet50, ResNet101, hoặc một họ mạng khác như VGG hay Xception.\vspace{5pt}\\
+Mô hình vẫn chưa có kết quả tốt khi áp dụng với những ảnh có một số đặc trưng lạ, chưa được học trong quá trình huấn luyện. Để cải thiện trí tuệ mô hình, ta cần tìm thêm nhiều tập dữ liệu với các đối tượng, đặc trưng phong phú để huấn luyện thêm [\textbf{\ref{enhance_experiments}}]. Ngoài ra, sử dụng một xương sống được tinh chỉnh tốt hơn mạng ResNet18 hiện có, chẳng hạn ResNet34, ResNet50, ResNet101, hoặc một họ mạng khác như VGG hay Xception.\vspace{5pt}\\
 Một cách tiếp cận khác để cải thiện mô hình, đó là huấn luyện nhiều bộ sinh, mỗi bộ sinh sẽ đảm nhiệm một nhóm đặc trưng nhất định. Như vậy chỉ cần cho bộ sinh học những ảnh liên quan đến chủ đề của mình. Bằng việc chuyên môn hoá chủ đề cho bộ sinh, ta không còn yêu cầu một bộ sinh có thể tạo màu tốt với mọi ảnh đầu vào. Thay vào đó, cho kết quả tốt hơn cả khi được đưa cho ảnh đúng chuyên môn. Quá trình huấn luyện cũng được đơn giản hơn do mô hình không phải học quá nhiều.\vspace{5pt}\\
 Một số những đề xuất về việc sử dụng GAN để tạo màu có kết quả tốt có thêm tham khảo thêm như \cite{Nazeri_2018}, khi tác giả sử dụng mạng GAN tích chập sâu - DCGAN áp dụng với ảnh độ phân giải cao, tăng tốc độ và ổn định huấn luyện. Cao và các cộng sự của mình \cite{cao2017unsupervised} cũng sử dụng cGAN để tạo màu một cách đa dạng nhờ vào lấy mẫu nhiễu đầu vào nhiều lần. Một đột phá khác, Vitoria \cite{vitoria2020chromagan} nhận thấy rằng ta có tận dụng phân bố phân lớp trong quá trình huấn luyện cho mạng GAN, và đưa ra mô hình với cái tên là ChromaGAN.
 
@@ -787,17 +851,12 @@ Một số những đề xuất về việc sử dụng GAN để tạo màu có
 Không chỉ dừng lại ở hình ảnh, ta cũng có thể áp dụng mô hình để phục chế màu cho các video, vì bản chất một video là sự kết hợp từ nhiều khung hình ghép lại. Trong thư mục đồ án, phần \texttt{test\_results} có một kết quả thử nghiệm của mô hình qua việc phục chế màu một đoạn nhỏ về phóng sự về chiến tranh ở Việt Nam.
 
 \begin{figure}[!h]
+\captionsetup{width=0.85\textwidth}
 \centering
-\includegraphics[width=15cm]{images/5_1.PNG}
-\caption{Ảnh Trường ĐH Bách Khoa TP.HCM ngày xưa (trái) và sau khi tô màu (phải)}
+\includegraphics[width=15cm]{images/final.PNG}
+\caption{Ảnh Trường ĐH Bách Khoa TP.HCM ngày xưa khi chưa có màu (trên) và sau khi tô màu: mô hình ban đầu (trái), mô hình sau khi cải thiện (phải)}
 \label{fig:bkhcmold}
 \end{figure}
-
-\newpage
-\vspace*{\fill}
-{\centering \textit{Trang này được cố ý để trống.}\par}
-\vspace{\fill}
-\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Phục lục - Ảnh màu}
@@ -897,9 +956,24 @@ Không chỉ dừng lại ở hình ảnh, ta cũng có thể áp dụng mô hì
 \end{figure}
 
 \begin{figure}[!h]
+\captionsetup{width=0.8\textwidth}
 \centering
-\includegraphics[width=15cm]{images/5_1.PNG}
-\caption*{Hình \ref{fig:bkhcmold}: Ảnh Trường ĐH Bách Khoa TP.HCM ngày xưa (trái) và sau khi tô màu (phải)}
+\includegraphics[width=15cm]{images/enhance.png}
+\caption*{Hình \ref{fig:enhance1} So sánh thử nghiệm sau khi huấn luyện lại. Hàng thứ 2 là kết quả của mô hình được huấn luyện lại.}
+\end{figure}
+
+\begin{figure}[!h]
+\captionsetup{width=0.8\textwidth}
+\centering
+\includegraphics[width=15cm]{images/enhance2.png}
+\caption*{Hình \ref{fig:enhance2} Thêm một vài so sánh thử nghiệm sau khi huấn luyện lại. Hàng thứ 2 là kết quả của mô hình được huấn luyện lại.}
+\end{figure}
+
+\begin{figure}[!h]
+\captionsetup{width=0.85\textwidth}
+\centering
+\includegraphics[width=15cm]{images/final.PNG}
+\caption*{Hình \ref{fig:bkhcmold} Ảnh Trường ĐH Bách Khoa TP.HCM ngày xưa khi chưa có màu (trên) và sau khi tô màu: mô hình ban đầu (trái), mô hình sau khi cải thiện (phải)}
 \end{figure}
 
 \clearpage
