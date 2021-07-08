@@ -1,0 +1,8 @@
+Pretrained Generator (ResUnet)
+https://drive.google.com/file/d/1eoOyJODjTk3QfzMwenjiGhHaIZ9nz6h2/view?usp=sharing
+
+Generatos and Discriminators
+https://drive.google.com/file/d/1BauMTT-g9TL2hmfSAB4vrty-WQTUC4D3/view?usp=sharing
+
+Enhanced Generators
+https://drive.google.com/file/d/1CuBfmlaEhDqNFiH68Im-AtPzjDRLY-MS/view?usp=sharing
