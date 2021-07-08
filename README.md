@@ -27,3 +27,5 @@ Mô hình thứ hai là mô hình được cải thiện bằng cách đưa ra t
 Chất lượng của hai mô hình được so sánh định tính qua những kết quả thử nghiệm, cũng như định lượng qua hai giá trị MSE và RMSE của mỗi mô hình.  
 
 Bên cạnh đó, xây dựng một API tạo màu bằng khung phần mềm Django của Python, từ đó triển khai một ứng dụng web đơn giản để tạo màu cho ảnh bằng khung phần mềm VueJS của Javascript.
+
+<p align="center"><img src="https://raw.githubusercontent.com/dee-ex/EE3151_SEM202_PROJECT/main/latex/images/demoweb.png" width="1000"></p>
