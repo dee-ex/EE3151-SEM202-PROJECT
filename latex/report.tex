@@ -214,14 +214,14 @@ BỘ MÔN VIỄN THÔNG
 Em cũng muốn gửi lời cảm ơn chân thành đến trường \textbf{Đại học Bách Khoa TP.HCM - Đại học Quốc gia TP.HCM}, khoa \textbf{Điện-Điện Tử}, bộ môn \textbf{Viễn Thông} đã cung cấp những kiến thức nền tảng, cách thức học tập và nghiên cứu.
 Thật khó để tưởng tượng rằng em sẽ tiếp cận và xử lý đề tài đồ án như thế nào nếu không có những vốn liếng quý báu đó.\vspace{5pt}
 
-Cũng không thể quên cảm ơn một số anh khoá trên cùng các bạn cùng khoá và một vài cá nhân đã giúp đỡ em rất nhiều trong quá trình tìm hiểu đề tài cũng như thực hiện khảo sát lấy số liệu cho đánh giá kết quả của đồ án.\vspace{5pt}
+Cũng không thể quên cảm ơn một số anh khoá trên, các bạn cùng khoá và một vài cá nhân đã giúp đỡ em rất nhiều trong quá trình tìm hiểu đề tài cũng như thực hiện khảo sát lấy số liệu cho đánh giá kết quả của đồ án.\vspace{5pt}
 
 Em xin chân thành cảm ơn tất cả.\vspace{20pt}\\
 
 \hfill
 \begin{tabular}{l@{}}
 \textit{Tp. Hồ Chí Minh, ngày \textbf{04} tháng \textbf{05} năm \textbf{2021}.}\vspace{10pt}\\
-\hspace{3cm}\textbf{Sinh Viên}
+\hspace{2cm}\textbf{Sinh Viên Thực Hiện}
 \end{tabular} 
 \end{abstract}
 
@@ -229,12 +229,12 @@ Em xin chân thành cảm ơn tất cả.\vspace{20pt}\\
 \begin{abstract}
 Tạo màu cho ảnh xám là một chủ đề nóng hổi và thú vị trong ngành thị giác máy tính trong khoảng hai thập kỉ vừa qua.
 Rất nhiều những nghiên cứu đã được thực hiện và cho rất nhiều phương pháp với những kết quả ấn tượng.
-Tuy việc tạo màu cho mỗi trường hợp là một bài toán có không ít lời giải vì rất nhiều màu có thể có cùng mức xám.
-Dẫn đến việc, với một tấm ảnh xám đầu vào, ta có thể có nhiều phương án màu lựa chọn mà vẫn có được tính chân thực.
+Tuy nhiên, việc tạo màu cho mỗi trường hợp là một bài toán có không ít lời giải vì rất nhiều màu có thể có cùng mức xám.
+Điều này dẫn đến một vấn đề rằng, với một tấm ảnh xám đầu vào, ta có thể có nhiều phương án màu lựa chọn mà vẫn có được tính chân thực.
 Nhưng điều đó không đồng nghĩa với việc đây là một bài toán đơn giản mà trái lại là một vấn đề nan giải.\vspace{5pt}
 
 Trong đồ án này, hai mô hình mạng đối nghịch tạo sinh có điều kiện - cGAN có bộ sinh kiến trúc Unet xây dựng bằng xương sống chuyển giao từ mạng phân loại ResNet18 và bộ phân biệt kiến trúc PatchGAN $70\times 70$, được triển khai và huấn luyện với tập dữ liệu COCO để xử lý vấn đề này.
-Chất lượng mô hình đầu tiên thông qua một cuộc khảo sát thực tế 100 người với thang điểm từ 1 (rất giả) đến 5 (rất thật).
+Chất lượng mô hình đầu tiên được thông qua một cuộc khảo sát thực tế 100 người với thang điểm từ 1 (rất giả) đến 5 (rất thật).
 Mô hình thứ hai là mô hình được cải thiện bằng cách đưa ra thay đổi nhỏ trong hàm mất và tăng số lượng dữ liệu huấn luyện.
 Chất lượng của hai mô hình được so sánh định tính qua những kết quả thử nghiệm, cũng như định lượng qua hai giá trị MSE và RMSE của mỗi mô hình.\vspace{5pt}
 
@@ -323,18 +323,18 @@ Bên cạnh đó, xây dựng một API tạo màu bằng khung phần mềm Dja
 
 Nhu cầu phục chế ảnh màu từ ảnh xám (đen trắng) không phải là hiếm.
 Thông thường là ảnh do tác động của thời gian làm mất hoặc sai màu.
-Đôi khi lại là ảnh được chụp ở thời xưa, thời đại chưa có công nghệ chụp ảnh màu.
-Và vì nhiều mục đích cho việc trải nghiệm chân thực, con người chúng ta muốn tái tạo lại màu cho những hình ảnh chưa có màu đó.\vspace{5pt}
+Đôi khi là ảnh được chụp ở thời xưa, thời đại chưa có công nghệ chụp ảnh màu.
+Và vì nhiều mục đích cho việc trải nghiệm chân thực, con người chúng ta muốn tái tạo lại màu cho những hình ảnh đen trắng đó.\vspace{5pt}
 
 Hiện nay, hầu hết những người thợ chỉnh sửa ảnh đều sử dụng phương pháp thủ công để phục hồi màu.
 Tuy có sự giúp đỡ của các công cụ hỗ trợ như các phần mềm thao tác với ảnh trên máy tính, để có thể có một tấm ảnh đẹp cũng đòi hỏi mất nhiều thời gian \cite{replytime2colorize2012}.
 Đôi khi có thể lên đến một hoặc hai tháng đối với những bức ảnh có nhiều chi tiết phức tạp.\vspace{5pt}
 
-Ở góc nhìn kỹ thuật, phục chế màu, hay tạo màu cho ảnh xám là một bài toán phức tạp có nhiều lời giải, vì việc một đối tượng trong một bức ảnh có thể có nhiều màu thích hợp.
+Ở góc nhìn kỹ thuật, phục chế màu, hay tạo màu cho ảnh xám là một bài toán phức tạp có nhiều lời giải, vì một đối tượng trong một bức ảnh có thể có nhiều màu thích hợp.
 Chẳng hạn như một nải chuối có thể màu lục khi chưa chín nhưng lại cũng có thể là màu vàng khi chín, và thậm chí có thể đã chín nhưng vẫn còn màu lục (hình \ref{fig:banana}).
-Do đó, việc khôi phục lại đúng chính xác màu cho một bức ảnh bất kì là chuyện gần như bất khả thi và cũng không cần thiết.
+Do đó, việc khôi phục lại chính xác màu cho một bức ảnh bất kì là chuyện gần như bất khả thi và cũng không cần thiết.
 Nhưng cũng không vì thế mà ta có thể gán một màu bất kì cho một đối tượng nào đó, giả sử như việc màu da người là màu xanh biển hoặc mặt trời là màu xanh lá.
-Nhìn một tấm ảnh sau khi được khôi phục màu lại có màu không phù hợp, phản ánh không khớp với những gì chúng ta quan sát thường ngày, hiển nhiên không phải là mục đích để chúng ta phải cực khổ đi khôi phục màu.\vspace{5pt}
+Nhìn một tấm ảnh sau khi được khôi phục màu lại có màu không phù hợp, có phản ánh không khớp với những gì chúng ta quan sát thường ngày, hiển nhiên không phải là mục đích để chúng ta phải cực khổ thực hiện khôi phục màu.\vspace{5pt}
 
 \begin{wrapfigure}{l}{0pt}
 \includegraphics[width=10.7cm]{images/1_1.jpg} 
@@ -351,7 +351,7 @@ Sau khi học sâu bùng nổ trong ngành thị giác máy tính, rất nhiều
 
 Theo những gì đã nghiên cứu về đề tài [\textbf{\ref{overview}}], đồ án này được đưa ra với mục đích xây dựng và huấn luyện một mô hình mạng học sâu để tạo màu cho ảnh xám.
 Yêu cầu của màu tạo ra không nhất thiết phải giống hoàn toàn so với màu thực (màu của ảnh/vật gốc nếu có).
-Thay vào đó là độ chân thực, hợp lí của ảnh sau khi ảnh được kết hợp với màu được tạo sẽ là thứ được hướng đến.
+Thay vào đó là độ chân thực, hợp lí của ảnh sau khi ảnh được kết hợp với màu được tạo là yếu tố được hướng đến.
 Mức độ chân thực, hợp lí sẽ được đánh giá định tính bằng một cuộc khảo sát trực tuyến gồm 100 người tham gia [\textbf{\ref{surveyforevaluation}}], và một chút định lượng thông qua hai giá trị MSE và RMSE [\textbf{\ref{mseandrmseeval}}]\vspace{5pt}
 
 Các nội dung trong đồ án sẽ được trình bày từ những cơ sở lý thuyết để giải quyết bài toán tạo màu.
@@ -403,7 +403,7 @@ Mức xám hoặc màu nhất định được biểu diễn như thế nào tu�
 
 Ảnh nhị phân \cite{wikibinimg2021} là loại ảnh sơ khai và đơn giản nhất.
 Mỗi điểm ảnh $p_{xy} \in \bm{G}_{\text{nhị phân}} = \{0, 1\}$ được biểu diễn bằng 1 bit.
-Với $p_{xy} = 0$ thì điểm ảnh nhận màu đen, và ngược lại thì sẽ nhận màu trắng (hình \ref{fig:binimg}).\vspace{5pt}
+Với $p_{xy} = 0$ thì điểm ảnh nhận màu đen, còn $p_{xy} = 1$ thì sẽ nhận màu trắng (hình \ref{fig:binimg}).\vspace{5pt}
 
 Khác một chút so với ảnh nhị phân, ảnh xám \cite{wikigrayimg2021} có tập giá trị đa dạng hơn là $\bm{G}_{\text{xám}} = [0, 255]$, được biểu diễn bằng 1 byte (8 bit).
 Cũng như ảnh nhị phân, giá trị điểm ảnh càng lớn thì màu của điểm ảnh đó càng gần màu trắng.
@@ -435,7 +435,7 @@ Còn nếu là $40$ mét/giây ($=144$ ki-lô-mét/giờ), chắc chỉ có th�
 
 Rõ ràng, khi nói tới vận tốc, con số là phần quan trọng.
 Nhưng đồng thời, đơn vị biểu diễn là điều buộc phải có.
-Ảnh màu cũng vậy, sẽ là khá thiếu xót nếu ta cần xử lý sâu một tấm ảnh nhưng không biết được ảnh đang được xử lý đang thuộc không gian màu nào.
+Ảnh màu cũng vậy, sẽ khá thiếu xót nếu ta cần xử lý sâu một tấm ảnh nhưng không biết được ảnh đang được xử lý đang thuộc không gian màu nào.
 Vì không tồn tại duy nhất một không gian màu \cite{wikicolorspace2021} cho mọi loại ảnh.
 Điều này là do nhu cầu và mục đích của con người rất đa dạng, dẫn tới có nhiều loại không gian màu đã được tạo ra để đáp ứng.\vspace{5pt}
 
@@ -487,9 +487,9 @@ Ngoài \textbf{RGB}, một không gian màu khác cũng được sử dụng kh�
 Các giá trị của \textbf{L*a*b*} mô tả tất cả những màu mà mắt người bình thường có thể nhìn thấy được.
 Mô hình màu này được xem là độc lập với thiết bị và thường được sử dụng như một cơ sở tham chiếu khi chuyển đổi từ một không gian màu này sang một không gian màu khác.\vspace{5pt}
 
-Cũng như \textbf{RGB}, Không gian \textbf{L*a*b*} cũng quan tấm đến 3 thông số của mỗi điểm ảnh (hình \ref{fig:inspectlab}) $\left(\bm{G}_{\mathbf{L^*}\mathbf{a^*}\mathbf{b^*}} = \bm{G}_{\mathbf{L}^*} \times \bm{G}_{\mathbf{a}^*} \times \bm{G}_{\mathbf{b}^*}\right)$.
+Cũng như \textbf{RGB}, Không gian \textbf{L*a*b*} cũng quan tâm đến 3 thông số của mỗi điểm ảnh (hình \ref{fig:inspectlab}) $\left(\bm{G}_{\mathbf{L^*}\mathbf{a^*}\mathbf{b^*}} = \bm{G}_{\mathbf{L}^*} \times \bm{G}_{\mathbf{a}^*} \times \bm{G}_{\mathbf{b}^*}\right)$.
 Thông số đầu tiên là \textbf{L*} đại diện cho độ sáng của của mỗi điểm ảnh.
-Giá trị \textbf{L*} càng lớn thì điểm ảnh càng nghiêng về màu trắng, ngược lại thì sẽ là màu đen.
+Giá trị \textbf{L*} càng lớn thì điểm ảnh càng nghiêng về màu trắng, ngược lại thì là màu đen.
 Hai thông số còn lại là \textbf{a*} và \textbf{b*} sẽ mang thông tin lần lượt là lục-đỏ và vàng-lam.
 Giá trị \textbf{a*} càng thấp thì điểm ảnh nghiêng về lục nhiều, đỏ ít.
 Ngược lại thì lục ít, đỏ nhiều và tương tự với giá trị \textbf{b*}.
@@ -518,7 +518,7 @@ Giữa hai không gian màu \textbf{RGB} và \textbf{L*a*b*}, mặc dù \textbf{
     \item Tận dụng kênh mức xám đầu vào để làm kênh độ sáng \textbf{L*} bằng cách điều chỉnh tỉ lệ. Khi đó mô hình chỉ phải dự đoán 2 kênh \textbf{a*} và \textbf{b*} thay vì phải dự đoán 3 kênh trong không gian \textbf{RGB}.\label{enum:secondreason}
 \end{enumerate}
 
-Trong hai lợi thế được nêu ra, (\ref{enum:secondreason}) được cho là lý do chính mà không gian màu \textbf{L*a*b*} trở thành không gian trong đại đa số các bài toán tạo màu cho ảnh xám.
+Trong hai lợi thế được nêu ra, (\ref{enum:secondreason}) được cho là lý do chính mà không gian màu \textbf{L*a*b*} trở thành không gian màu trong đại đa số các bài toán tạo màu cho ảnh xám.
 Và trong đồ án này, cũng không phải là một trường hợp ngoại lệ, không gian màu sử dụng để xử lý bài toán sẽ là không gian \textbf{L*a*b*}.
 
 \chapter{Những phương pháp đã được đề xuất cho bài toán tạo màu}\label{proposedmethods}
@@ -530,7 +530,7 @@ Phương pháp thứ 3 là sử dụng học sâu thì hoàn toàn tự động,
 
 \section{Phương pháp đánh dấu màu một vài điểm ảnh rồi dùng thuật toán loang}\label{scribblemethods}
 
-Được đề xuất bởi Levin \cite{alevincolorization}, từ một tấm ảnh xám đầu vào, ta sẽ vẽ một vài màu cơ bản từ đó làm nền tảng, định hướng cho mô hình.
+Được đề xuất bởi Levin \cite{alevincolorization}, từ một tấm ảnh xám đầu vào, ta sẽ vẽ một vài màu cơ bản để từ đó làm nền tảng, định hướng cho mô hình.
 Ý tưởng này xuất phát từ quan sát rằng, những điểm ảnh có độ sáng gần bằng nhau (mức xám xấp xỉ) và có khoảng cách trên ảnh gần nhau sẽ có khả năng tương tự cao dẫn đến màu giống nhau.\vspace{5pt}
 
 Một vài cách cải thiện độ hiệu quả của phương pháp trên như là sử dụng thông tin các cạnh để thuật toán loang hoạt động chính xác hơn \cite{huangcolorization}.
@@ -545,7 +545,7 @@ Hay theo như Luan \cite{luancolorization}, ta sẽ đánh dấu mỗi màu cho 
 \end{figure}
 
 Phương pháp thuộc loại này nhìn chung có kết quả màu rất tốt, nhưng lại đòi hỏi không ít sức người.
-Đặc biệt với những ảnh nhiều chi tiết thì, việc đánh dấu màu sẽ trở nên khó khăn và tốn nhiều thời gian.
+Đặc biệt với những ảnh nhiều chi tiết, thì việc đánh dấu màu sẽ trở nên khó khăn và tốn nhiều thời gian.
 Thêm nữa, việc chọn màu để đánh dấu cũng không phải là một vấn đề dễ dàng với một người có ít kinh nghiệm về màu sắc.
 
 \section{Phương pháp dựa vào mẫu}\label{examplarmethods}
@@ -584,7 +584,7 @@ Khung mô hình sử dụng mạng \textbf{GAN} \cite{goodfellow2014generative} 
 
 \chapter{Khung mô hình mạng học sâu pix2pix}\label{pix2pixframework}
 
-Với mong muốn có một cái nhìn rõ ràng về kiến trúc mô hình được áp dụng cho bài toán tạo màu của đồ án này, sẽ là không hề lãng phí nếu ta dành một chút thời gian để đi qua những thành phần chính của khung mô hình pix2pix.\vspace{5pt}
+Với mong muốn có một cái nhìn rõ ràng về kiến trúc mô hình được áp dụng cho bài toán tạo màu của đồ án này, sẽ không hề lãng phí nếu ta dành một chút thời gian để đi qua những thành phần chính của khung mô hình pix2pix.\vspace{5pt}
 
 Nòng cốt của khung là một mạng đối nghịch tạo sinh GAN [\textbf{\ref{ganarchitecture}}] với một sinh theo kiến trúc mạng Unet [\textbf{\ref{unetarchitecture}}].
 Những đặc điểm khác biệt của mạng GAN trong khung mô hình so với mạng GAN thông thường cũng sẽ được trình bày [\textbf{\ref{overviewofpix2pix}}].
@@ -633,7 +633,7 @@ Người làm tiền giả sẽ cố gắng làm ra những tờ tiền giả l�
 \label{fig:thiefandpolice}
 \end{figure}
 
-Mục tiêu cuối cùng của GAN là người làm tiền giả phải có khả năng làm tiền giả sao cho cảnh sát không phân biệt được đâu là thật đâu là giả (50/50) để đem tiền giả đi tiêu thụ.
+Mục tiêu cuối cùng của GAN là người làm tiền giả phải có khả năng làm tiền giả, sao cho cảnh sát không phân biệt được đâu là thật đâu là giả (50/50) để đem tiền giả đi tiêu thụ.
 Trong quá trình huấn luyện mạng GAN, thì nhiệm vụ của cảnh sát là học cách phân biệt tiền giả và tiền thật, bên cạnh đó là nói cho người làm tiền giả là nên làm giả như thế nào cho giống thật hơn.
 Dần dần thì người làm tiền giả sẽ làm ra được tiền giống tiền thật và cảnh sát cũng trở nên thành thạo trong việc phân biệt tiền thật hay giả.
 
@@ -649,7 +649,7 @@ Trong thống kê, điều này được gọi là bài kiểm tra từ hai tậ
 Sự khác biệt chính giữa hầu hết những bài nghiên cứu thống kê và GAN, là GAN sử dụng ý tưởng này theo kiểu có tính xây dựng.
 Nói cách khác, thay vì chỉ huấn luyện mô hình để nói ``này, hai tập dữ liệu đó có vẻ như không đến từ cùng một phân phối'', thì GAN sử dụng phương pháp \textbf{kiểm tra trên hai tập mẫu}\footnote{Wikipedia, \lq Two-sample hypothesis testing\rq, \href{https://bit.ly/3vmFwVD}{https://bit.ly/3vmFwVD}} để cung cấp tín hiệu cho việc huấn luyện cho bộ sinh.
 Điều này cho phép ta cải thiện bộ sinh để có thể sinh dữ liệu tới khi ra được thứ gì đó giống như dữ liệu thực.
-Ở mức tối thiểu nhất, nó cần phải lừa được bộ phân biệt, kể cả bộ phân biệt của ta là một mạng nơ-ron sâu tân tiên nhất.
+Ở mức tối thiểu nhất, bộ sinh cần phải lừa được bộ phân biệt, kể cả bộ phân biệt của ta là một mạng nơ-ron sâu tân tiên nhất.
 
 \begin{figure}[!h]
 \captionsetup{width=0.8\textwidth}
@@ -735,7 +735,7 @@ Sẽ có hai phiên: lan truyền thuận và lan truyền ngược.
 
 Những ảnh được tạo ra sẽ được gán nhãn $y=0$, kết hợp với $b$ vector\footnote{Việc chọn số lượng mẫu từ tập dữ liệu thật nên là bằng số lượng mẫu từ dữ liệu giả, sẽ tránh được hiện tượng không cân bằng khi huấn luyện một bộ phân loại \cite{jasonimbalance2019}.} chọn từ tập dữ liệu thật $\mathbf{X} = \left[\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_b\right] \in \mathbb{R}^{n \times b}$ được gán nhãn $y=1$.
 Đầu vào của bộ phân biệt sẽ là $\mathbf{\bar{X}} = \left[\mathbf{X'}, \mathbf{X}\right] \in \mathbb{R}^{2b \times n}$ để phân loại.
-Hoành thành phiên lan truyền thuận.
+Hoàn thành phiên lan truyền thuận.
 Kết quả phân loại là các xác suất xem mỗi điểm dữ liệu là thuộc dữ liệu thật hay là giả:
 \begin{align}
     \widehat{\mathbf{Y}}_D &= D\left(\mathbf{\bar{X}}\right) = D\left(\left[\mathbf{X'}, \mathbf{X}\right]\right)\nonumber\\
@@ -750,7 +750,7 @@ Một nửa của phiên lan truyền ngược đã được hoàn thành.\vspac
 Một nửa còn lại của phiên lan truyền ngược tiếp tục.
 Ta cần cố định các gradient của $D$, rồi lấy kết quả tính được trong phiên trước $\widehat{\mathbf{Y}}_D = D\left(\mathbf{X'}\right) = \left[\widehat{y}_{D; 1}, \widehat{y}_{D; 2}, \dots, \widehat{y}_{D; b}\right] \in \mathbb{R}^{1 \times b}$, rồi cùng với nhãn $\mathbf{Y}_D=\left[1, 1, \dots, 1\right] \in \mathbb{R}^{1 \times b}$ được truyền vào hàm mất mát (\ref{eqn:objforrealg}), và ta cũng sẽ tối ưu bằng gradient thông qua một thuật toán tối ưu.
 Vì trong (\ref{eqn:objforrealg}) cũng có cùng $D$, nên như đã đề cập ban đầu, các gradient của $D$ cần được cố định lại trước khi huấn luyện $G$.
-Qua mỗi lượt tố ưu, phân phối của tập ảnh sẽ được điều chỉnh cho giống với phân phối tập dữ liệu thật.\vspace{5pt}
+Qua mỗi lượt tối ưu, phân phối của tập ảnh sẽ được điều chỉnh cho giống với phân phối tập dữ liệu thật.\vspace{5pt}
 
 Trong suốt quá trình tối ưu, phân phối nhiễu được giữ nguyên.
 Việc thay đổi phân phối này làm phức tạp thêm cho công cuộc huấn luyện mà cũng chưa chắc đem lại kết quả khả quan hơn.
@@ -764,7 +764,7 @@ Nhằm để tìm ra một ánh xạ, sao cho từ một tập đích là một 
 Đã từng có một cách tiếp cận GMN (\textbf{G}enerative \textbf{M}atching \textbf{N}etworks)\footnote{GMN không phải là một mô hình cụ thể mà là một loại phương pháp.}.
 Phương pháp này sẽ so sánh phân phối của ảnh ánh xạ với phân phối dữ liệu thật dự vào các mẫu từ hai tập.
 Dẫu vậy, việc cài đặt và huấn luyện cần một phép đo hợp lý để so sánh hai phân phối là một điều không hề dễ dàng \cite{replyganovergmn2019}.
-Và hay thay, GAN đưa ra một giải pháp thông minh, là mượn một mạng học sâu khác để giải quyết.
+Và tuyệt vời thay, GAN đưa ra một giải pháp thông minh, là mượn một mạng học sâu khác để giải quyết.
 Nhờ vào việc để bộ phân biệt - một mạng học sâu không quá phức tạp để tối ưu dẫn đường, công việc của ta bây giờ sẽ chỉ là tập trung nhiều cho tối ưu ánh xạ bộ sinh.\vspace{5pt}
 
 Nếu đi đủ sâu, ta sẽ nhận thấy rằng, việc GAN làm thực sự không phải là giúp cho phân phối tập ảnh giống hoàn toàn với phân phối thật.
@@ -816,7 +816,7 @@ Những ảnh này thường được gọi là các bộ lọc và mỗi lần 
 Để tính tích chập \cite{wikikernalimgpro2021}, họ trượt bộ lọc này đi khắp ảnh theo một bước nhảy $S$ cố định, kèm thêm đệm $P$ \cite{dl2sandp2021} cho ảnh để phù hợp kích thước nếu cần thiết.
 Ở từng vị trí được trượt, ta lần lượt trích xuất vùng ảnh tương ứng mà bộ lọc được đặt lên $\mathcal{I}_{m:m + K - 1, n: n + K - 1} \in \bm{G}^{K \times K}$, sau đó sử dụng công thức:
 \begin{align}
-    \left(\mathcal{I} \ast \mathcal{K}\right)_{m*, n*}=\sum_{k=1}^{\dim\left(\bm{G}\right)}\sum_{i=0}^K\sum_{j=0}^K\mathcal{I}^{\left(k\right)}_{m+i,n+j}\mathcal{K}^{\left(k\right)}_{i+1, j+1}\label{eqn:convformula}
+    \left(\mathcal{I} \ast \mathcal{K}\right)_{m*, n*}=\sum_{k=1}^{\dim\left(\bm{G}\right)}\sum_{i=0}^{K-1}\sum_{j=0}^{K-1}\mathcal{I}^{\left(k\right)}_{m+i,n+j}\mathcal{K}^{\left(k\right)}_{i+1, j+1}\label{eqn:convformula}
 \end{align}
 
 Trong đó, toạ độ $(m*, n*)$ là vị trí kết quả của việc áp ảnh bộ lọc lên phần $\mathcal{I}_{m:m + K - 1, n: n + K - 1}$ (hình \ref{fig:convoperator}).
@@ -841,7 +841,7 @@ Kích thước cuối cùng của ảnh đầu ra (giả sử ảnh đầu vào 
     W_{\text{đầu ra}} = \left\lfloor\dfrac{W_{\text{đầu vào}} - K + 2P}{S}\right\rfloor + 1\label{eqn:cnnsize}
 \end{align}
 
-Công thức (\ref{eqn:cnnsize}) sẽ là cần thiết khi ta quan tấm đến vùng nhận thức, để hiểu rõ về kiến trúc PatchGAN [\textbf{\ref{patchdiscriminator}}].\vspace{5pt}
+Công thức (\ref{eqn:cnnsize}) sẽ là cần thiết khi ta quan tâm đến vùng nhận thức, để hiểu rõ về kiến trúc PatchGAN [\textbf{\ref{patchdiscriminator}}].\vspace{5pt}
 
 Mạng tích chập là mạng kết hợp nhiều bộ lọc theo một kiến trúc nào đó, nhằm trích lọc được các đặc trưng từ ảnh (như mắt, mũi, miệng từ ảnh mặt người).
 Điều này giúp cho bài toán được giải quyết một cách đơn giản, hiệu quả hơn cho các tác vụ về ảnh, khi ta chỉ cần tập trung vào thứ cần tập trung nhờ bộ lọc.
@@ -884,7 +884,7 @@ Nhánh ở bên trái là thu hẹp, còn phần mở rộng là nhánh ở bên
 Mỗi phần sẽ thực hiện một nhiệm vụ riêng như sau:
 
 \begin{itemize}
-    \item Phần thu hẹp: làm nhiệm vụ trích lọc đăc trưng để tìm ra bối cảnh của hình ảnh, tức để biết \textbf{CÁI GÌ}.
+    \item Phần thu hẹp: làm nhiệm vụ trích lọc đặc trưng để tìm ra bối cảnh của hình ảnh, tức để biết \textbf{CÁI GÌ}.
     Vai trò của phần thu hẹp tương tự như một bộ mã hoá.
     Một mạng tích chập sâu sẽ đảm nhận trích lọc đặc trưng.
     Lý do nhánh được gọi là thu hẹp vì kích thước dài và rộng, chính là độ phân giải, của các tầng giảm dần.
@@ -894,8 +894,7 @@ Mỗi phần sẽ thực hiện một nhiệm vụ riêng như sau:
     Ở phần này, độ phân giải của các tầng được tăng lại để biết được vị trí, tức \textbf{Ở ĐÂU}.
     Từ đó đánh dấu nhãn của từng điểm ảnh.
     Để làm được điều này, ta cần sử dụng kĩ thuật giải chập.
-    Có nhiều phương pháp để giải chập, chẳng hạn như sao chép các giá trị điểm ảnh liền kề theo các kích thước cửa sổ \cite{khanhunet2020}.
-    Hoặc một phương thức khác là sử dụng tích chập giãn nở \cite{yu2016multiscale}.
+    Có nhiều phương pháp để giải chập, chẳng hạn như sao chép các giá trị điểm ảnh liền kề theo các kích thước cửa sổ \cite{khanhunet2020}, hoặc một phương thức khác là sử dụng tích chập giãn nở \cite{yu2016multiscale}.
     Nhưng được áp dụng nhiều nhất là tích chập chuyển vị \cite{divyanshutransconv2020} cùng với đêm và sải bước thích hợp.
 \end{itemize}
 
@@ -951,8 +950,7 @@ Giữa hai kiến trúc, Unet có kết quả khả quan hơn.\vspace{5pt}
 \end{figure}
 
 Bộ phân biệt giờ đây sẽ nhận vào một cặp ảnh.
-Trong đó luôn có ảnh $x$, được coi là điều kiện cho bộ phân biệt.
-Còn ảnh còn lại là ảnh đầu ra.
+Trong đó luôn có ảnh $x$ - được coi là điều kiện cho bộ phân biệt, ảnh còn lại là ảnh đầu ra.
 Ảnh đầu ra có thể là ảnh được tạo ra từ bộ sinh $G(x)$, hoặc là nhãn của ảnh đầu vào được lấy từ tập dữ liệu huấn luyện $y$.
 Các cặp ảnh sẽ được gán nhán là thật nếu là $(x, y)$.
 Ngược lại sẽ là giả nếu đi kèm là $\left(x, G(x)\right)$.
@@ -1037,7 +1035,7 @@ Hàm mục tiêu của mạng GAN có điều kiện pix2pix gần giống với
 
 Trước khi giải thích ý nghĩa của công thức, có một điều chưa được rõ ràng trong (\ref{eqn:lcgan}), là một mâu thuẫn nhỏ ở $\log D\left(x, y\right)$ và $\log\left(1-D\left(x, G\left(x, z\right)\right)\right)$.
 Như đã biết, hàm $\log\left(\cdot\right)$ là một hàm nhận vào một số vô hướng, nhưng theo [\textbf{\ref{patchdiscriminator}}] trình bày, bộ phân biệt của kiến trúc pix2pix sẽ trả ra một ma trận.
-Cũng ở trong đã trình bày [\textbf{\ref{patchdiscriminator}}]: ``Xác suất để toàn bộ đầu vào là thật sẽ là trung bình cộng của toàn bộ $k^2$ Patch''.
+Cũng ở trong [\textbf{\ref{patchdiscriminator}}] đã trình bày: ``Xác suất để toàn bộ đầu vào là thật sẽ là trung bình cộng của toàn bộ $k^2$ Patch''.
 Tức là, ta có thể hiểu ngầm giá trị bộ phân biệt Patch $D\left(\cdot\right)$ thành một số vô hướng như sau:
 \begin{align}
     D\left(\cdot\right) = \dfrac{1}{k^2}\sum_{i=1}^{k}\sum_{j=1}^{k}\left(\mathbf{P_D}\right)_{ij} \label{eqn:aliaslogD}
@@ -1113,8 +1111,7 @@ Vô số các ứng dụng liên quan đã được tạo ra (hình \ref{fig:app
     \item Hay một ứng dụng tuyệt vời nhất mà được chúng ta sử dụng hằng ngày, đó chính là chuyển đổi bức ảnh chụp từ vệ sinh sang Google Maps.
 \end{itemize}
 
-Đồ án này triển khai một mô hình dựa theo khung mô hình pix2pix để giải quyết bài toán tạo màu cho ảnh xám.
-Một ứng dụng của khung mô hình trên.
+Đồ án này triển khai một mô hình dựa theo khung mô hình pix2pix để giải quyết bài toán tạo màu cho ảnh xám - một ứng dụng của khung mô hình trên.
 Kích thước ảnh được chọn để xử lý sẽ là $256 \times 256$, một kích thước phổ biến trong những mạng tích chập hiện nay và phù hợp cho mô hình được triển khai.
 
 \section{Phát biểu bài toán, cách áp dụng vào khung mô hình pix2pix và hàm mất mát}
@@ -1175,12 +1172,12 @@ Trong đó, $\text{Ck}$ là một tầng tích chập $k$ bộ lọc, $\text{Dk}
 Cả 2 quá trình chập và giải chập đều sử dụng kích thước bộ lọc là $4$, sải bước $2$ và đệm $1$.\vspace{5pt}
 
 Xây dựng mô hình theo kiến trúc trên không quá khó.
-Nhưng huấn luyện để có được kết quả tốt tương tự, khi hạn chế về số lượng và chất lượng của tập dữ liệu, cũng như phần cứng máy tính bị giới là khá thử thách [\textbf{\ref{badexperiment}}].\vspace{5pt}
+Nhưng huấn luyện để có được kết quả tốt tương tự, khi hạn chế về số lượng và chất lượng của tập dữ liệu, cũng như phần cứng máy tính bị giới hạn là khá thử thách [\textbf{\ref{badexperiment}}].\vspace{5pt}
 
 Cải thiện mô hình mà vẫn tiết kiệm chi phí, phương pháp học chuyển giao được áp dụng để làm điều này.
 Kiến trúc cho bộ sinh vẫn sẽ là kiến trúc theo mạng Unet, tuy nhiên sẽ được chuyển giao bằng cách lấy xương sống là ResNet18 \cite{christopherresunet2019}.
 Có 3 họ mạng được chủ yếu dùng để làm xương sống cho Unet là VGG, ResNet và Xception \cite{backboneresnet2020}.
-Trong những họ mạng trên, ResNet18 thuộc họ mạng ResNet có kích thước không quá lớn \cite{Khan_2020}, phù hợp để huấn luyện với phần cứng bị giới hạn.
+Trong những họ mạng trên, ResNet18 thuộc họ mạng ResNet có kích thước không quá lớn \cite{Khan_2020}, phù hợp để huấn luyện với phần cứng bị eo hẹp.
 
 \begin{figure}[!h]
 \captionsetup{width=0.8\textwidth}
@@ -1220,7 +1217,7 @@ Toàn bộ mã nguồn, cũng như những tệp liên quan trong quá trình ho
 
 Để có thể biết được đầy đủ những thư viện cũng như phiên bản thư viện được sử dụng, tham khảo tệp tin \texttt{requirements.txt} trong đường dẫn thư mục đồ án.
 
-\section{Tập dữ liệu, chuấn hoá và làm giàu dữ liệu}\label{normalization}
+\section{Tập dữ liệu được sử dụng; chuẩn hoá và làm giàu dữ liệu}\label{normalization}
 
 Tập dữ liệu được chọn sử dụng là tập \textbf{COCO}\footnote{COCO Dataset - Download, \href{https://cocodataset.org/\#download}{https://cocodataset.org/\#download}} (hình \ref{fig:cocodataset}) có trong thư viện \textbf{fastai}, ta có thể dễ dàng tải về.
 Số lượng ảnh được chọn để huấn luyện là $10,000$.
@@ -1250,7 +1247,7 @@ Do đó, cận trên $110$ để chuẩn hoá.
 Ta cũng hoàn toàn có thể chọn riêng cận trên để chuẩn hoá.
 Giả sử như của $\bm{G}_{\mathbf{a}^*}$ là $100$, còn $\bm{G}_{\mathbf{b}^*}$ là $110$.
 Dĩ nhiên, trong cả hai hướng chuẩn hoá trên thì một số trường hợp khi đưa từ giá trị chuẩn hoá về lại giá trị gốc, sẽ không còn khớp với thư viện \textbf{skimage}.
-Tuy nhiên, phần đó là thiểu số, không quá đáng kể.\vspace{5pt}
+Nhưng phần đó là thiểu số, không quá đáng kể.\vspace{5pt}
 
 Bên cạnh chuẩn hoá không gian màu, kích thước ảnh cũng sẽ được điều chỉnh lại thành ảnh vuông kích thước $256\times 256$ nếu cần thiết.
 Sử dụng lật đối xứng theo trục tung (hình \ref{fig:horizontalflip}) để làm giàu dữ liệu cho việc huấn luyện.
@@ -1303,7 +1300,7 @@ Và sẽ là lựa chọn cho các thử nghiệm và đánh giá trong những 
 \section{Mô hình GAN với bộ sinh kiến trúc pix2pix}\label{badexperiment}
 
 Kết quả ở hình dưới là kết quả của mô hình với bộ sinh xây dựng theo kiến trúc đề xuất của tác giả pix2pix [\textbf{\ref{transferlearning}}], được thử nghiệm với 5 bức ảnh ngẫu nhiên lấy từ tập COCO (không nằm trong tập huấn luyện).
-Khá không may mắn, kết quả không được như chúng ta mong đợi (hình \ref{fig:worseexperiment}).
+Thật không may mắn, kết quả không được như chúng ta mong đợi (hình \ref{fig:worseexperiment}).
 
 \begin{figure}[!h]
 \captionsetup{width=0.8\textwidth}
@@ -1354,8 +1351,8 @@ Có thể là do những vùng chưa có màu hợp lí là trong quá trình hu
 \label{fig:edgecase}
 \end{figure}
 
-Điều trên dẫn đến một hạn chế khác nữa là đối với những ảnh không có đặc trưng rõ ràng, những đặc trưng lạ lẫm mà chưa được đưa vào huấn luyện cho mô hình.
-Chẳng hạn ảnh chủ đề logo (hình \ref{fig:failcolorlogo}), mô hình hoàn toàn không có khả năng tạo được màu phù hợp vì không hiểu được đặc trưng.\vspace{5pt}
+Điều trên dẫn đến một hạn chế khác nữa là đối với những ảnh không có đặc trưng rõ ràng, những đặc trưng lạ lẫm mà chưa được đưa vào huấn luyện cho mô hình, thì mô hình hoàn toàn không có khả năng tạo được màu phù hợp vì không hiểu được đặc trưng.
+Chẳng hạn ảnh chủ đề logo của trường Đại học Bách Khoa (hình \ref{fig:failcolorlogo}), gần như không có được màu từ mô hình.\vspace{5pt}
 
 Thêm một hạn chế khác là mô hình cũng chưa thực sự biết được những điểm ảnh nào sẽ cùng một đối tượng và cùng màu.
 Cụ thể như trong hình \ref{fig:betterexperiment}, ảnh hai cố gái cầm vợt tennis (thứ 2 từ phía bên phải), phần dưới của áo được chọn là màu hồng, còn phần trên của áo lại màu xanh.
@@ -1398,7 +1395,7 @@ Kết quả đã cải thiện một cách rõ rệt, nên khó có thể nói l
 Vì mô hình lúc này được khuyến khích để dùng màu xám \cite{zhangcolorization}.
 Rõ nghĩa hơn, mô hình đã học được một quy tắc, khi không chắc chắn nên chọn màu gì, thì chọn một giá trị trung bình trong thang $[-1, 1]$ là $\approx (0, 0)$ là một cách an toàn nhất để có thể tối thiểu sai số.
 Dẫn đến màu tạo ra có xu hướng không khác là mấy so với màu xám.
-Và dĩ nhiên màu trong cuộc sống của chúng ta rất nhiều màu sặc sỡ hơn màu xám.
+Và dĩ nhiên màu trong cuộc sống của chúng ta có rất nhiều màu sặc sỡ hơn màu xám.
 Khiến cho kết quả của mô hình trước khi đưa vào mạng GAN huấn luyện chưa đáp ứng mục tiêu hợp lí, chân thực đưa ra.
 
 \section{Khảo sát đánh giá định tính chất lượng mô hình}\label{surveyforevaluation}
@@ -1613,7 +1610,7 @@ Một điều dễ thấy đó là, mô hình $\mathcal{G}_2$ cho kết quả t�
 Ảnh 02 là một ảnh nhiều chi tiết, với tính cách tinh nghịch của $\mathcal{G}_2$ khi không được tiền huấn luyện, rất dễ để có những màu lệch so với màu gốc.
 Nên MSE của $\mathcal{G}_2$ cao hơn so với của $\mathcal{G}_1$.\vspace{5pt}
 
-Thông qua RMSE, ta có thể thấy được rằng, mỗi điểm màu của cả hai mô hình sẽ chệnh lệch khoảng 10 đến 20 (thấp nhất là 12.2746 của $\mathcal{G}_2$ với ảnh 09, nhiều nhất là 25.0632 của $\mathcal{G}_1$ với ảnh 15) đơn vị so với ảnh gốc.
+Thông qua RMSE, ta có thể thấy được rằng, mỗi điểm màu của cả hai mô hình sẽ chênh lệch khoảng 10 đến 20 (thấp nhất là 12.2746 của $\mathcal{G}_2$ với ảnh 09, nhiều nhất là 25.0632 của $\mathcal{G}_1$ với ảnh 15) đơn vị so với ảnh gốc.
 Kết quả này quả thực không quá tệ khi chỉ chênh khoảng $100\% \times \dfrac{10}{2\times 110} = 4.55 \%$ đến $100\% \times \dfrac{20}{2\times 110} = 9.09 \%$ so với khoảng giá trị.
 
 
@@ -1674,7 +1671,7 @@ Một phương pháp tạo màu cho ảnh xám đã được trình bày thông 
 Phương pháp sử dụng khung mô hình một mạng đối nghịch tạo sinh có điều kiện - cGAN theo khung mô hình pix2pix.
 Mạng gồm bộ phân biệt kiến trúc Patch $70 \times 70$, và một bộ sinh mạng tích chập kiến trúc Unet có phần xương sống học chuyển giao từ mạng tích chập ResNet18.\vspace{5pt}
 
-Mô hình được lập trình và huấn luyện bằng ngôn ngữ Python, trên nên tảng mã nguồn mở về máy học Pytorch của Facebook's AI Research lab.
+Mô hình được lập trình và huấn luyện bằng ngôn ngữ Python, trên nền tảng mã nguồn mở về máy học Pytorch của Facebook's AI Research lab.
 Quá trình huấn luyện cho ra hai mô hình.
 Mô hình đầu tiên được huấn luyện theo hàm mất mát kiểu GAN kết hợp với một hàm mất mát truyền thống chuẩn 1, trên tập dữ liệu 10,000 bức ảnh của COCO (kết hợp với làm giàu dữ liệu là 20,000 bức ảnh).
 Mô hình thứ hai là mô hình cải thiện với các thông số khởi tạo giống với mô hình ban đầu, nhưng hàm mất mát không còn kết hợp hàm mất mát chuẩn 1.
@@ -1726,6 +1723,7 @@ Trong thư mục đồ án, phần \texttt{test\_results} có một kết quả 
 \end{figure}
 
 \renewcommand{\bibname}{Tài liệu tham khảo}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography
 
