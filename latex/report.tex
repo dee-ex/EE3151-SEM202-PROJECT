@@ -209,7 +209,7 @@ BỘ MÔN VIỄN THÔNG
 
 \renewcommand{\abstractname}{Lời cảm ơn}
 \begin{abstract}
- Trước tiên, em muốn bày tỏ lòng biết ơn chân thành tới giáo viên hướng dẫn của em, thầy \textbf{PGS.TS Hà Hoàng Kha} - ``giảng viên bộ môn Viễn Thông khoa Điện--Điện Tử'' đã trực tiếp giúp đỡ, hướng dẫn và cho lời khuyên trong việc nghiên cứu, thực hiện, chỉnh sửa và hoàn thiện đồ án.\vspace{5pt}
+ Trước tiên, em muốn bày tỏ lòng biết ơn chân thành tới giáo viên hướng dẫn của em, thầy \textbf{PGS.TS. Hà Hoàng Kha} - ``giảng viên bộ môn Viễn Thông khoa Điện--Điện Tử'' đã trực tiếp giúp đỡ, hướng dẫn và cho lời khuyên trong việc nghiên cứu, thực hiện, chỉnh sửa và hoàn thiện đồ án.\vspace{5pt}
 
 Em cũng muốn gửi lời cảm ơn chân thành đến trường \textbf{Đại học Bách Khoa TP.HCM - Đại học Quốc gia TP.HCM}, khoa \textbf{Điện-Điện Tử}, bộ môn \textbf{Viễn Thông} đã cung cấp những kiến thức nền tảng, cách thức học tập và nghiên cứu.
 Thật khó để tưởng tượng rằng em sẽ tiếp cận và xử lý đề tài đồ án như thế nào nếu không có những vốn liếng quý báu đó.\vspace{5pt}
@@ -236,7 +236,7 @@ Nhưng điều đó không đồng nghĩa với việc đây là một bài toá
 Trong đồ án này, hai mô hình mạng đối nghịch tạo sinh có điều kiện - cGAN có bộ sinh kiến trúc Unet xây dựng bằng xương sống chuyển giao từ mạng phân loại ResNet18 và bộ phân biệt kiến trúc PatchGAN $70\times 70$, được triển khai và huấn luyện với tập dữ liệu COCO để xử lý vấn đề này.
 Chất lượng mô hình đầu tiên được thông qua một cuộc khảo sát thực tế 100 người với thang điểm từ 1 (rất giả) đến 5 (rất thật).
 Mô hình thứ hai là mô hình được cải thiện bằng cách đưa ra thay đổi nhỏ trong hàm mất và tăng số lượng dữ liệu huấn luyện.
-Chất lượng của hai mô hình được so sánh định tính qua những kết quả thử nghiệm, cũng như định lượng qua hai giá trị MSE và RMSE của mỗi mô hình.\vspace{5pt}
+Chất lượng của hai mô hình được so sánh định tính qua những kết quả thử nghiệm, cũng như định lượng qua hai giá trị là sai số toàn phương trung bình - MSE và sai số toàn phương trung bình gốc - RMSE của mỗi mô hình.\vspace{5pt}
 
 Bên cạnh đó, xây dựng một API tạo màu bằng khung phần mềm Django của Python, từ đó triển khai một ứng dụng web đơn giản để tạo màu cho ảnh bằng khung phần mềm VueJS của Javascript.
 \end{abstract}
@@ -352,7 +352,7 @@ Sau khi học sâu bùng nổ trong ngành thị giác máy tính, rất nhiều
 Theo những gì đã nghiên cứu về đề tài [\textbf{\ref{overview}}], đồ án này được đưa ra với mục đích xây dựng và huấn luyện một mô hình mạng học sâu để tạo màu cho ảnh xám.
 Yêu cầu của màu tạo ra không nhất thiết phải giống hoàn toàn so với màu thực (màu của ảnh/vật gốc nếu có).
 Thay vào đó là độ chân thực, hợp lí của ảnh sau khi ảnh được kết hợp với màu được tạo là yếu tố được hướng đến.
-Mức độ chân thực, hợp lí sẽ được đánh giá định tính bằng một cuộc khảo sát trực tuyến gồm 100 người tham gia [\textbf{\ref{surveyforevaluation}}], và một chút định lượng thông qua hai giá trị MSE và RMSE [\textbf{\ref{mseandrmseeval}}]\vspace{5pt}
+Mức độ chân thực, hợp lí sẽ được đánh giá định tính bằng một cuộc khảo sát trực tuyến gồm 100 người tham gia [\textbf{\ref{surveyforevaluation}}], và một chút định lượng thông qua hai giá trị: sai số toàn phương trung bình - MSE và sai số toàn phương trung bình gốc - RMSE [\textbf{\ref{mseandrmseeval}}]\vspace{5pt}
 
 Các nội dung trong đồ án sẽ được trình bày từ những cơ sở lý thuyết để giải quyết bài toán tạo màu.
 Từ những khái niệm nền tảng về ảnh số, cho tới kiến trúc mô hình được sử dụng.
@@ -599,7 +599,7 @@ Yann LeCun, giám đốc Facebook AI Research, từng nhận xét về ý tưở
 
 Tạm dịch:
 
-\say{Là ý tưởng thú ví nhất về Học Máy trong vòng 10 năm qua.}\vspace{5pt}
+\say{Là ý tưởng thú vị nhất về Học Máy trong vòng 10 năm qua.}\vspace{5pt}
 
 Những lời có cánh từ một trong những người có tầm ảnh hưởng trong ngành khoa học máy tính, quả là một điều tuyệt vời.
 Và thật vậy, GAN đã có được rất nhiều thành tựu từ khi được giới thiệu với công chúng từ năm 2014 bởi Ian J.Goodfellow và công sự của mình \cite{goodfellow2014generative}.
@@ -863,8 +863,7 @@ Khi người ta nhận thấy sức mạnh của tích chập, rất nhiều ki�
 \label{fig:mlvsdlindip}
 \end{figure}
 
-Trích lọc đặc trưng không phải là mục tiêu duy nhất khiến mọi người sử dụng tích chập.
-Mà còn là vì nó có thể hỗ trợ trong việc giảm các loại nhiễu cơ bản của ảnh đầu vào \cite{fu2018convolutional} (hình \ref{fig:mylady_denoise}), làm mờ ảnh nếu cần thiết \cite{szandala2020convolutional},..
+Trích lọc đặc trưng không phải là mục tiêu duy nhất khiến mọi người sử dụng tích chập, mà còn là vì nó có thể hỗ trợ trong việc giảm các loại nhiễu cơ bản của ảnh đầu vào \cite{fu2018convolutional} (hình \ref{fig:mylady_denoise}), làm mờ ảnh nếu cần thiết \cite{szandala2020convolutional},..
 
 \begin{figure}[!h]
 \captionsetup{width=0.8\textwidth}
@@ -895,7 +894,7 @@ Mỗi phần sẽ thực hiện một nhiệm vụ riêng như sau:
     Từ đó đánh dấu nhãn của từng điểm ảnh.
     Để làm được điều này, ta cần sử dụng kĩ thuật giải chập.
     Có nhiều phương pháp để giải chập, chẳng hạn như sao chép các giá trị điểm ảnh liền kề theo các kích thước cửa sổ \cite{khanhunet2020}, hoặc một phương thức khác là sử dụng tích chập giãn nở \cite{yu2016multiscale}.
-    Nhưng được áp dụng nhiều nhất là tích chập chuyển vị \cite{divyanshutransconv2020} cùng với đêm và sải bước thích hợp.
+    Nhưng được áp dụng nhiều nhất là tích chập chuyển vị \cite{divyanshutransconv2020} cùng với đệm và sải bước thích hợp.
 \end{itemize}
 
 \begin{figure}[!h]
@@ -922,7 +921,7 @@ Một số nghiên cứu còn có thể chứng minh lý thuyết rằng, nhữn
 \section{Kiến trúc pix2pix}\label{pix2pixarchitecture}
 
 Bản thân kiến trúc GAN trong pix2pix cũng không khác mạng GAN [\textbf{\ref{ganarchitecture}}] là bao.
-Gồm 2 mạng chính: bộ phân biệt và bộ sinh (hình \ref{fig:pix2pixarchitecture}).
+Gồm 2 mạng chính: bộ phân biệt và bộ sinh.
 Tuy nhiên, có nhiều điều khác biệt giữa pix2pix so với GAN thông thường.
 
 \begin{figure}[!h]
@@ -952,8 +951,7 @@ Giữa hai kiến trúc, Unet có kết quả khả quan hơn.\vspace{5pt}
 Bộ phân biệt giờ đây sẽ nhận vào một cặp ảnh.
 Trong đó luôn có ảnh $x$ - được coi là điều kiện cho bộ phân biệt, ảnh còn lại là ảnh đầu ra.
 Ảnh đầu ra có thể là ảnh được tạo ra từ bộ sinh $G(x)$, hoặc là nhãn của ảnh đầu vào được lấy từ tập dữ liệu huấn luyện $y$.
-Các cặp ảnh sẽ được gán nhán là thật nếu là $(x, y)$.
-Ngược lại sẽ là giả nếu đi kèm là $\left(x, G(x)\right)$.
+Các cặp ảnh sẽ được gán nhán là thật nếu là $(x, y)$, ngược lại sẽ là giả nếu đi kèm là $\left(x, G(x)\right)$ (hình \ref{fig:pix2pixarchitecture}).
 
 \subsection{Bộ phân biệt Patch trong pix2pix}\label{patchdiscriminator}
 
@@ -1042,7 +1040,7 @@ Tức là, ta có thể hiểu ngầm giá trị bộ phân biệt Patch $D\left
 \end{align}
 
 Tuy nhiên, nếu đem cách hiểu (\ref{eqn:aliaslogD}) đưa vào trong các hàm mất mát để tối ưu, ta sẽ có xu hướng làm trung bình của các phần tử trong $\mathbf{P_D}$ gần với $0$ hoặc $1$, thay vì cái ta thực sự muốn chính là mỗi phần tử $\left(\mathbf{P_D}\right)_{ij}$ gần với $0$ hoặc $1$.
-Vậy nên, giá trị $\log\left(f\left(D\right)\right)$ trong những hàm mất mát nên được hiểu ngầm là:
+Vậy nên, giá trị $\log\left(f\left(D\right)\right)$ trong những hàm mất mát nên được hiểu ngầm để cài đặt thuật toán một cách đúng đắn là:
 \begin{align}
     \log\left(f\left(D\right)\right) = \dfrac{1}{k^2}\sum_{i=1}^k\sum_{j=1}^k\log\left(f\left(\mathbf{P_D}_{ij}\right)\right)
 \end{align}
@@ -1069,13 +1067,13 @@ Lý do để chọn chuẩn bậc 1 thay vì chuẩn bậc 2 có thể được 
 Điều này làm bó buộc kết quả dự đoán của bộ sinh khiến cho mô hình có xu thế bảo thủ, sẽ đưa dự đoán bằng cách lấy giá trị trung bình để tối thiểu sự trừng phạt.
 Thay vì vậy, chuẩn bậc 1 lại nhẹ nhàng trong việc trừng phạt hơn, khiến cho mô hình có thể sáng tạo để đưa ra những dự đoán phiêu lưu hơn.\vspace{5pt}
 
-Từ (\ref{eqn:lcgan}) và (\ref{eqn:l1lossforgan}), hàm mục tiêu của pix2pix là:
+Từ (\ref{eqn:lcgan}) và (\ref{eqn:l1lossforgan}), ta có hàm mục tiêu của pix2pix là:
 \begin{align}
     G^* = \arg\min_G\max_D\left\{\mathcal{L}_{cGAN}\left(G, D\right) + \lambda\mathcal{L}_{L1}\left(G\right)\right\}\label{eqn:losspix2pix}
 \end{align}
 
 Hệ số $\lambda$ là hệ số cân bằng, để giúp cho sự chênh lệch giữa hai hàm mất mát không bị áp đảo nghiêng về một bên, khiến một hàm bị lu mờ trong quá trình huấn luyện.
-Thông thường giá trị hàm mất mát của GAN sẽ có giá trị lớn hơn nhiều so với hàm chuẩn 1. Nên xu hướng chọn $\lambda$ sẽ là một số lớn hơn $1$.\vspace{5pt}
+Thông thường giá trị hàm mất mát của GAN sẽ có giá trị lớn hơn so với hàm chuẩn 1, nên xu hướng chọn $\lambda$ sẽ là một số lớn hơn $1$.\vspace{5pt}
 
 Một điều nữa cần được đề cập, chính là phần nhiễu $z$.
 Nhìn chung, nếu không có nhiễu này, mô hình vẫn có thể học được một cách bình thường.
@@ -1574,18 +1572,18 @@ Nhưng cũng đầy rủi ro, khi lại dễ dàng gây ra sự lem luốc (màu
 Cũng giống với vua Midas, ta cần phải hiểu rõ cái ta muốn.
 Để cân đối được chuyện sáng tạo cho mô hình, công việc này cần thêm nhiều thử nghiệm trong tương lai.
 
-\section{Đánh giá định lượng hai mô hình trước và sau khi cải thiện bằng MSE và RMSE}\label{mseandrmseeval}
+\section{Đánh giá định lượng hai mô hình trước và sau khi cải thiện thông qua giá trị MSE và giá trị RMSE}\label{mseandrmseeval}
 
 Mô hình trước cải thiện $\mathcal{G}_1$ là mô hình được huấn luyện với $10,000$ ảnh.
 Sau cải thiện là mô hình $\mathcal{G}_2$ được huấn luyện với $18,000$ ảnh.
 Ta sẽ đánh giá hai mô hình qua MSE \cite{wikimse2021} và RMSE \cite{wikirmse2021}.
-Công thức để đánh giá MSE sử dụng được cho ở (\ref{eqn:mse}), còn RMSE là căn bậc 2 của MSE (\ref{eqn:rmse}).\vspace{5pt}
+Công thức để đánh giá MSE sử dụng được cho ở (\ref{eqn:mse}) dưới dạng chuẩn Frobenius và dạng tường minh, còn RMSE là căn bậc 2 của MSE (\ref{eqn:rmse}).\vspace{5pt}
 
-Ta sẽ khảo sát 2 ảnh kênh màu, tức là $\widehat{\mathcal{I}}_{\text{đầu ra } \mathcal{G}_1} = \mathcal{G}_1\left(\mathcal{I}_{\text{đầu vào}}\right)$ với $\widehat{\mathcal{I}}_{\text{đầu ra } \mathcal{G}_2} = \mathcal{G}_2\left(\mathcal{I}_{\text{đầu vào}}\right)$ so với $\mathcal{I}_{\text{đầu ra}}$.
-Ở đây, $\mathcal{I}_{\text{đầu ra}}, \mathcal{I}_{\text{đầu ra } \mathcal{G}_1}, \mathcal{I}_{\text{đầu ra } \mathcal{G}_2}$ sẽ được chuẩn hoá theo tập $[-110, 110] \times [-110, 110]$.
+Ta sẽ khảo sát 2 ảnh kênh màu (ảnh không tính kênh mức xám), tức là ảnh $\widehat{\mathcal{I}}_{\text{đầu ra } \mathcal{G}_1} = \mathcal{G}_1\left(\mathcal{I}_{\text{đầu vào}}\right)$ và ảnh $\widehat{\mathcal{I}}_{\text{đầu ra } \mathcal{G}_2} = \mathcal{G}_2\left(\mathcal{I}_{\text{đầu vào}}\right)$ so với ảnh $\mathcal{I}_{\text{đầu ra}}$.
+Ở đây, $\mathcal{I}_{\text{đầu ra}}, \mathcal{I}_{\text{đầu ra } \mathcal{G}_1}, \mathcal{I}_{\text{đầu ra } \mathcal{G}_2}$ đã được chuẩn hoá theo tập $[-110, 110] \times [-110, 110]$.
 \begin{align}
-    \text{MSE} = \frac{2}{256\times 256}\sum_{k=1}^{2}\sum_{i=1}^{256}\sum_{j=1}^{256}\left\{\widehat{\mathcal{I}}_{\text{đầu ra}} - \mathcal{I}_{\text{đầu ra}}\right\}^2 \label{eqn:mse}\\
-    \text{RMSE} = \sqrt{\text{MSE}} = \sqrt{\frac{2}{256\times 256}\sum_{k=1}^{2}\sum_{i=1}^{256}\sum_{j=1}^{256}\left\{\widehat{\mathcal{I}}_{\text{đầu ra}} - \mathcal{I}_{\text{đầu ra}}\right\}^2} \label{eqn:rmse}
+    \text{MSE} = \frac{1}{2 \times 256^2}\Big|\Big| \widehat{\mathcal{I}}_{\text{đầu ra}} - \mathcal{I}_{\text{đầu ra}} \Big|\Big|^2_F = \frac{1}{2 \times 256^2}\sum_{k=1}^{2}\sum_{i, j=1}^{256}\left\{\Big(\widehat{\mathcal{I}}_{\text{đầu ra}}\Big)^{(k)}_{ij} - \Big(\mathcal{I}_{\text{đầu ra}}\Big)^{(k)}_{ij}\right\}^2 \label{eqn:mse}\\
+    \text{RMSE} = \sqrt{\text{MSE}} = \sqrt{\frac{1}{2\times 256^2}\sum_{k=1}^{2}\sum_{i,  j=1}^{256}\Big\{\left(\widehat{\mathcal{I}}_{\text{đầu ra}}\Big)^{(k)}_{ij} - \Big(\mathcal{I}_{\text{đầu ra}}\Big)^{(k)}_{ij}\right\}^2} \label{eqn:rmse}
 \end{align}
 
 \begin{table}[!h]
@@ -1606,7 +1604,7 @@ Có 4 ảnh được đem ra để đánh giá.
 Trong đó, một nửa là 2 tấm trong những ảnh có kết quả tệ (ảnh 02, ảnh 15), còn lại là 2 tấm trong nhóm kết quả tốt (ảnh 07, ảnh 09) [\textbf{\ref{surveyforevaluation}}].
 Kết quả được cho ở bảng \ref{tab:msermse}.\vspace{5pt}
 
-Một điều dễ thấy đó là, mô hình $\mathcal{G}_2$ cho kết quả tốt hơn so với $\mathcal{G}_1$ khi 3/4 ảnh (ảnh 07, ảnh 09 và ảnh 15) có kết quả MSE thấp hơn.
+Một điều dễ thấy đó là, mô hình $\mathcal{G}_2$ cho kết quả tốt hơn so với $\mathcal{G}_1$ khi 3 trên 4 ảnh (ảnh 07, ảnh 09 và ảnh 15) có kết quả MSE thấp hơn.
 Ảnh 02 là một ảnh nhiều chi tiết, với tính cách tinh nghịch của $\mathcal{G}_2$ khi không được tiền huấn luyện, rất dễ để có những màu lệch so với màu gốc.
 Nên MSE của $\mathcal{G}_2$ cao hơn so với của $\mathcal{G}_1$.\vspace{5pt}
 
