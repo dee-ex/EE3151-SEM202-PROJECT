@@ -68,7 +68,7 @@
 
 %can file puenc.def trong thu muc goc de option [unicode] tao ra bookmark bang tieng Viet
 \hypersetup{urlcolor=blue, linkcolor=black, citecolor=green, colorlinks=true} 
-%\usepackage{pstcol} 								
+%\usepackage{pstcol}                                
 % PSTricks with the standard color package
 
 \newtheorem{theorem}{{\bf Theorem}}
@@ -88,18 +88,18 @@
     \put(0,-8){\includegraphics[width=8mm, height=8mm]{hcmut.png}}
     %\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
    \end{picture}&
-	%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
-	\begin{tabular}{l}
-		\textbf{\bf \ttfamily Trường Đại học Bách Khoa - Đại học Quốc gia TP.HCM}\\
-		\textbf{\bf \ttfamily Bộ môn Viễn Thông}
-	\end{tabular} 	
+    %\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+    \begin{tabular}{l}
+        \textbf{\bf \ttfamily Trường Đại học Bách Khoa - Đại học Quốc gia TP.HCM}\\
+        \textbf{\bf \ttfamily Bộ môn Viễn Thông}
+    \end{tabular}   
  \end{tabular}
 }
 \fancyhead[R]{
-	\begin{tabular}{l}
-		\tiny \bf \\
-		\tiny \bf 
-	\end{tabular}  }
+    \begin{tabular}{l}
+        \tiny \bf \\
+        \tiny \bf 
+    \end{tabular}  }
 
 \fancyfoot{} % clear all footer fields
 \fancyfoot[L]{\scriptsize \ttfamily Đồ án học kì 202 - 05/2021}
@@ -116,18 +116,18 @@
     \put(0,-8){\includegraphics[width=8mm, height=8mm]{hcmut.png}}
     %\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
    \end{picture}&
-	%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
-	\begin{tabular}{l}
-		\textbf{\bf \ttfamily Trường Đại học Bách Khoa - Đại học Quốc gia TP.HCM}\\
-		\textbf{\bf \ttfamily Bộ môn Viễn Thông}
-	\end{tabular} 	
+    %\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+    \begin{tabular}{l}
+        \textbf{\bf \ttfamily Trường Đại học Bách Khoa - Đại học Quốc gia TP.HCM}\\
+        \textbf{\bf \ttfamily Bộ môn Viễn Thông}
+    \end{tabular}   
  \end{tabular}
 }
 \fancyhead[R]{
-	\begin{tabular}{l}
-		\tiny \bf \\
-		\tiny \bf 
-	\end{tabular}  }
+    \begin{tabular}{l}
+        \tiny \bf \\
+        \tiny \bf 
+    \end{tabular}  }
 
 \fancyfoot{} % clear all footer fields
 \fancyfoot[L]{\scriptsize \ttfamily Đồ án học kì 202 - 05/2021}
@@ -221,7 +221,8 @@ Em xin chân thành cảm ơn tất cả.\vspace{20pt}\\
 \hfill
 \begin{tabular}{l@{}}
 \textit{Tp. Hồ Chí Minh, ngày \textbf{04} tháng \textbf{05} năm \textbf{2021}.}\vspace{10pt}\\
-\hspace{2cm}\textbf{Sinh Viên Thực Hiện}
+\hspace{2cm}\textbf{Sinh Viên Thực Hiện}\vspace{10pt}\\
+\hspace{2.3cm}Nguyễn Thành Trung
 \end{tabular} 
 \end{abstract}
 
@@ -1127,7 +1128,7 @@ Sao cho ảnh $\widehat{\mathcal{I}}$ (\ref{eqn:fakeimage}) là một ảnh màu
 
 Việc xây dựng ánh xạ sẽ được dẫn đường bởi ánh xạ:
 \begin{align}
-    \mathcal{D}:\left(\bm{G}_{\mathbf{L^*}\mathbf{a^*}\mathbf{b^*}}\right)^{256 \times 256} \rightarrow \mathbb{R}^{70 \times 70}
+    \mathcal{D}:\left(\bm{G}_{\mathbf{L^*}\mathbf{a^*}\mathbf{b^*}}\right)^{256 \times 256} \rightarrow \mathbb{R}^{30 \times 30}
 \end{align}
 
 \end{tcolorbox}
@@ -1144,8 +1145,8 @@ Kết quả trả ra sau cùng là hai kênh màu $\widehat{\mathcal{I}}_{\text{
 Khi đó, ảnh giả được bộ sinh tạo ra là $\widehat{\mathcal{I}} = \left(\mathcal{I}_{\text{đầu vào}}, \widehat{\mathcal{I}}_{\text{đầu ra}}\right)$.\vspace{5pt}
 
 Đầu vào của bộ phân biệt có thể là ảnh $\mathcal{I} = \left(\mathcal{I}_{\text{đầu vào}}, \mathcal{I}_{\text{đầu ra}}\right)$ với $\mathcal{I}_{\text{đầu ra}} \in \bm{G}_{\mathbf{a}^*} \times \bm{G}_{\mathbf{b}^*}$ là nhãn tương ứng với $\mathcal{I}_{\text{đầu vào}}$ trong tập dữ liệu huấn luyện.
-Với đầu vào này, ta sẽ gán nhãn cho là $\mathbf{P_D} = \mathbf{J}_{70 \times 70}$ vì là dữ liệu thật.
-Còn khi dữ liệu đầu vào là $\widehat{\mathcal{I}}$, ta sẽ có nhãn cho bộ phân biệt là $\mathbf{P_D} = \mathbf{O}_{70 \times 70}$.\vspace{5pt}
+Với đầu vào này, ta sẽ gán nhãn cho là $\mathbf{P_D} = \mathbf{J}_{30 \times 30}$ vì là dữ liệu thật.
+Còn khi dữ liệu đầu vào là $\widehat{\mathcal{I}}$, ta sẽ có nhãn cho bộ phân biệt là $\mathbf{P_D} = \mathbf{O}_{30 \times 30}$.\vspace{5pt}
 
 Dựa vào (\ref{eqn:losspix2pix}) và bỏ nhiễu [\textbf{\ref{objofpix2pix}}], ta có hàm mục tiêu cho bài toán tô màu là:
 \begin{align}
